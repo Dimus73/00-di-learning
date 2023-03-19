@@ -1,0 +1,106 @@
+*{
+	font-family: Roboto;
+}
+
+body{
+	margin: 0;
+}
+#main-contayner{
+	max-width: 1440px;
+	width: 100%;
+}
+
+#top-band{
+	display: inline-flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 30px;
+	background-color: rgb(216, 216, 216);
+}
+
+.top-band{
+	display: inline-block;
+	margin: 0 50px;
+}
+
+.top-band , .top-band input{
+	font-size: 10px;
+}
+
+#background-img{
+	display: inline-block;
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: 350px;
+	background-image: url("pexels-ben-mack-5326990.jpg");
+	background-size: cover;
+}
+
+#cente-container{
+	display: inline-flex;
+	flex-direction: column;
+	position: relative;
+	align-items: center;
+	justify-content:center;
+	z-index: 2;
+	width: 100%;
+	height: 350px;
+}
+
+
+#cente-container h1{
+	width: 70%;
+	text-align: center;
+}
+
+#cente-container form{
+	/* display: inline-block; */
+	width: 60%;
+	max-width: 300px;
+}
+
+#centr-form input[type="email"]{
+	width: 75%;
+}
+#centr-form input[type="button"]{
+	width: 20%;
+}
+
+
+input[type="button"]{
+	background-color: rgb(243, 63, 237);
+	border: 0;
+  border-radius: 2px;
+  /* background: #ccc; */
+}
+
+.bottom{
+	background-color: rgb(210, 211, 211);
+	padding-top: 70px;
+}
+
+#boxs{
+	display: flex;
+	/* width: 80vw; */
+	padding: 0 10vw;
+	justify-content: space-around;
+}
+
+.boxs{
+	display: flex;
+	flex-direction: column;
+	width: 25vw;
+	align-items: center;
+	justify-content: center;
+}
+
+.boxs p, .boxs h4{
+	text-align: center;
+}
+
+.boxs p{
+	margin-top: 0;
+}

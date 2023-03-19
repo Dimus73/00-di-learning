@@ -1,0 +1,30 @@
+*{
+	font-family: Roboto
+}
+
+/* .bold{
+	text-decoration: double;
+} */
+
+.yellow{
+	background-color: yellow;
+}
+
+th, td{
+	border: solid;
+}
+
+#p-in-border{
+	border: 1px black solid;
+	text-align: center;
+	color: red;
+}
+
+.image{
+	text-align: center;
+}
+
+img{
+	border: 4px solid orange;
+
+}
