@@ -1,0 +1,36 @@
+  nav{
+		background-color: black;
+	}
+	i{
+		color: white;
+		padding: 5px 0px 5px 15px;
+	}
+	a{
+		color: white;
+		float: right;
+		font-size: 9px;
+		text-decoration: none;
+		padding: 8px 15px 0 0;
+	}
+
+	footer{
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		background-color: black;
+	}
+
+	div{
+		color: white;
+		font-size: 8px;
+		padding: 4px 0 4px 8px
+	}
+
+	div, a{
+		font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
+
+	a:hover{
+		font-weight: 700;
+		text-decoration: underline;
+	}
