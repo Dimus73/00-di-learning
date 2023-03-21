@@ -1,0 +1,28 @@
+.container{
+	display: grid;
+	width: 800px;
+	height: 300px;
+	/* grid-template-columns: repeat(3,1fr);	 */
+	grid-template-columns: 80px auto 80px;	
+}
+
+.hor{
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.ver{
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+
+.flex{
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	background-color: yellow;
+	margin: auto;
+}
