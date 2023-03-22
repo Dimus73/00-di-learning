@@ -1,0 +1,81 @@
+.box{
+	border: 1px black solid;
+	width: 20px;
+	height: 20px;
+	/* padding: 5px; */
+}
+
+.b1{
+	background-color:rgb(239, 120, 48);
+	grid-area: b1;
+}
+
+.b2{
+	background-color: rgb(245, 180, 120);
+	grid-area: b2;
+}
+
+.b3{
+	background-color: rgb(156, 79, 28);
+	grid-area: b3;
+}
+
+.b4{
+	background-color: rgb(245, 180, 120);
+	grid-area: b4;
+}
+.b5{
+	background-color: rgb(156, 79, 28);
+	grid-area: b5;
+}
+.b6{
+	background-color: rgb(239, 120, 48);
+	grid-area: b6;
+}
+.b7{
+	background-color: rgb(156, 79, 28);
+	grid-area: b7;
+}
+.b8{
+	background-color: rgb(239, 120, 48);
+	grid-area: b8;
+}
+.b9{
+	background-color: rgb(245, 180, 120);
+	grid-area: b9;
+}
+
+
+
+.container{
+	display: grid;
+	width: 60px;
+	grid-template-columns: 20px 20px 20px ;
+	grid-template-rows: 20px 20px 20px ;
+	grid-template-areas: 
+	"b1 b4 b7" 
+	"b2 b5 b8" 
+	"b3 b6 b9" ;
+
+	/* border: 1px black solid;
+	padding: 20px; */
+	}
+
+.wraper{
+	display: grid;
+	width: 60px;
+	grid-template-columns:repeat(5, 60px)  ;
+	grid-template-rows: repeat(5, 60px) ;
+	/* grid-template-areas: 
+	"b1 b4 b7" 
+	"b2 b5 b8" 
+	"b3 b6 b9" ; */
+
+	/* border: 1px black solid;
+	padding: 20px; */
+	}
+
+	body{
+		display: inline-block;
+		margin: 0;
+	}
