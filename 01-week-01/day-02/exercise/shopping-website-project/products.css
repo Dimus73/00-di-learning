@@ -109,6 +109,53 @@ text-align: center;
 	text-decoration: line-through;
 }
 
+.hover-bloc{
+	display: none;
+	position: relative;
+	top: 40px;
+}
+.container:hover .hover-bloc{
+	display: inline-block;
+}
+
+.add-to-wish{
+	position: relative;
+	top: 40px;
+	left: -8px;
+}
+.add-to-text{
+	display: inline-block;
+	position: relative;
+	background-color: black;
+	color: white;
+	font-size: 9px;
+	z-index: 2;
+}
+.add-to-pointer{
+	display: inline-block;
+	position: relative;
+	width: 10px;
+	height: 10px;
+	top: 5px;
+	left: 45px;
+	background-color: black;
+	transform: rotate(45deg);
+	z-index: 0;
+}
+.icons{
+	display: inline-block;
+	position: relative;
+	top: 50px;
+
+}
+.add-icon{
+	background-color: white;
+	color: black;
+	padding: 3px;
+}
+.add-icon:hover{
+	background-color: orange;
+}
 .button{
 	font-size: 10px;
 	font-weight: 700;
@@ -117,6 +164,11 @@ text-align: center;
 	margin: 10px 20px 10px 20px;
 	padding: 10px 0;
 }
+.container:hover .button{
+	background-color: blue;
+	color: white;
+}
+
 
 .button:hover{
 	background-color: rgb(66, 58, 58);
