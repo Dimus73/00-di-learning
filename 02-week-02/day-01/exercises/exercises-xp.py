@@ -1,6 +1,8 @@
 print ("Hello word /b"*5)
 
-for i in range(0,5): print ("Hello word /b")
+for i in range(0,5): print ("\033[31mHello \033[34mword\033[37m")
+print ("\033[31mHello \033[34mword\033[37m\n"*5)
+
 print (99**3*8)
 
 comp_name="Apple"
