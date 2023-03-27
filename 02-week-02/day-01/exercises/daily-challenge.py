@@ -1,4 +1,5 @@
 import random
+
 string=input("Enter string: ")
 string_len=len(string)
 
