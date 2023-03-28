@@ -64,7 +64,7 @@ more_on_zara={
 }
 brand.update(more_on_zara)
 print(brand)
-print(brand[number_stores])
+print(brand['number_stores'])
 
 
 # --------- Exercise 04 ------------
