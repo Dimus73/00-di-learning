@@ -87,7 +87,8 @@ print("The cost of your pizza will be: ", (10+len(toppings_list)*2.5))
 print("\nExercise 09 family")
 age_list=[]
 price_list=[]
-total_pice=0
+total_pice_var1=0
+total_pice_var2=0
 age_string=input("Enter the age of all family members. Separate the age with a space.: ")
 age_list=age_string.split(" ")
 for p in range(0,len(age_list)):
@@ -99,9 +100,12 @@ for p in range(0,len(age_list)):
      else:
          price_list.append(15)
 for p in price_list:
-		total_pice+=p
+		total_pice_var1+=p
+# or
+total_pice_var2=sum(price_list)
 print("List of your ticket prices:", price_list)
-print("The total ticket price will be:", total_pice)
+print("The total ticket price will be:", total_pice_var1)
+print("The total ticket price will be(Another way to calculate):", total_pice_var2)
 
 
 # --------- Challenge 9 group of teenagers------------
