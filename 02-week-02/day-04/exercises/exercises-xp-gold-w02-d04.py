@@ -68,7 +68,6 @@ def main():
     res_list=[]
     for i in range(100):
         res_list.append(throw_until_doubles())
-    print (res_list)
     print(f"It took {sum(res_list)} iterations to get 100 matches")
     print(f"Average number of throws before a match {sum(res_list)/len(res_list)}")
     

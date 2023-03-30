@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Tarantino-Project"
+		},
+		{
+			"path": "../../../../03-Front-End-Development"
+		},
+		{
+			"path": "../../../../04-HTM-Precurs"
+		},
+		{
+			"path": "../../../../23-03-12"
+		},
+		{
+			"path": "../../../../05-hackathon"
+		},
+		{
+			"path": "../../../../23-03-19"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../07-portfolio"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "00-di-learning"
+	}
+}
