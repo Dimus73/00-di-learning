@@ -20,7 +20,10 @@ class Farm:
     def get_animal_types(self):
           return sorted([d for d in self.animals.keys()])
     def get_short_info(self):
-          temp = ",".join(self.get_animal_types())
+          temp_list=[]
+          for p in self.get_animal_types():
+                temp_list.append((p+'s') if p!='sheep' else p)
+          temp = ", ".join(temp_list)
           return (self.farm_name+"'s farm has: "+temp+".") 
     
 macdonald=Farm("\nMcDonald")
