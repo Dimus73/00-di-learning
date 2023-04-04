@@ -1,0 +1,76 @@
+# import meth
+# --------- Exercise 01 ------------
+print("\nExercise 01")
+
+
+class TestClass():
+    """ This text is written to show the completion of the task. """
+
+    def __init__(self) -> None:
+        pass
+
+
+print(abs(-10))
+print(int(10.234))
+# print(input("Enter number: "))
+a = TestClass
+print(a.__doc__)
+
+# --------- Exercise 02 ------------
+print("\nExercise 02")
+
+
+class Currency():
+    def __init__(self, lable, value) -> None:
+        self.lable = lable
+        self.value = value
+
+    def __str__(self) -> str:
+        return (f"{self.value} {self.lable}{'s'if self.value>1 else ''}")
+
+    def __int__(self) -> int:
+        return (self.value)
+
+    def __repr__(self) -> str:
+        return (f"{self.value} {self.lable}{'s'if self.value>1 else ''}")
+
+    def __add__(self, in_var):
+        if type(in_var) == int:
+            self.value += in_var
+            return self.value
+        elif type(in_var) == type(self):
+            if self.lable == in_var.lable:
+                self.value += in_var.value
+                return (f"{self.value} {self.lable}{'s'if self.value>1 else ''}")
+            else:
+              raise TypeError ("Addddddddddddddd")
+
+    def __iadd__(self, in_var):
+        if type(in_var) == int:
+            self.value += in_var
+            return (self)
+        elif type(in_var) == type(self):
+            if self.lable == in_var.lable:
+                self.value += in_var.value
+                return (self)
+            else:
+              raise TypeError ("Ddddddddd")
+
+
+c1 = Currency('dollar', 5)
+c2 = Currency('dollar', 10)
+c3 = Currency('shekel', 1)
+c4 = Currency('shekel', 10)
+
+print(str(c1))
+print(int(c1))
+print(repr(c1))
+print(c1+5)
+print(c1+c1)
+print(c1)
+c1+=5
+print(c1)
+print(type(c1), type(c2))
+c1 += c2
+print(c1)
+print(c1+c3)

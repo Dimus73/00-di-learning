@@ -64,11 +64,20 @@ class ATM():
             self.log_in(name, pw)
         exit()
 
+    def search_account(self, name):
+        account_found = None
+        for account in self.account_list:
+            if account.username == name:
+                account_found = account
+                break
+        return account_found
+    
     def log_in(self, name, pw):
-        user_bank_account = [n for n in self.account_list if n.username == name]
-        if len(user_bank_account) == 1:
-            if user_bank_account[0].password == pw:
-                self.show_account_menu(name, pw, user_bank_account[0])
+        user_bank_account = self.search_account(name)
+
+        if user_bank_account:
+            if user_bank_account.password == pw:
+                self.show_account_menu(name, pw, user_bank_account)
             else:
                 self.curent_try += 1
 
