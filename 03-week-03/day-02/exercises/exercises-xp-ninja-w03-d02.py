@@ -49,10 +49,10 @@ class Field():
 
         for a in range(1, self.field_h):
             for b in range(1, self.field_w):
-                if self.play_field[b][a].status and self.play_field[b][a].need_to_draw:
-                    pygame.draw.rect(self.display, (100, 100, 100), (a*self.point_w, b*self.point_h, self.point_w, self.point_h))
-                if not self.play_field[b][a].status and self.play_field[b][a].need_to_draw:
-                    pygame.draw.rect(self.display, (255, 255, 255), (a*self.point_w, b*self.point_h, self.point_w, self.point_h))
+                if self.play_field[a][b].status and self.play_field[a][b].need_to_draw:
+                    pygame.draw.rect(self.display, (100, 100, 100), (b*self.point_w, a*self.point_h, self.point_w, self.point_h))
+                if not self.play_field[a][b].status and self.play_field[a][b].need_to_draw:
+                    pygame.draw.rect(self.display, (255, 255, 255), (b*self.point_w, a*self.point_h, self.point_w, self.point_h))
 
 
 class Point():
@@ -87,8 +87,8 @@ class Point():
     def set_status(self, status):
         self.status=status
 
-w=200
-h=200
+w=500
+h=300
 pygame.init()
 display = pygame.display.set_mode((w+8, h+8))
 game_field = Field(w, h, 1, 4, 4, display)
