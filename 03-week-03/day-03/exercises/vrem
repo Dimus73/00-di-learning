@@ -1,0 +1,61 @@
+
+# # --------- Exercise 01 ------------
+print("\nExercise 01")
+
+
+class Temperature():
+    converter_to_kelvin = {}
+    converter_from_kelvin = {}
+
+    def __init__(self, name, fn_to_kelvin, fn_from_kelvin) -> None:
+        Temperature.converter_to_kelvin[name] = fn_to_kelvin
+        Temperature.converter_from_kelvin[name] = fn_from_kelvin
+        
+    def convert_to(self, tempr, name):
+        return(Temperature.converter_from_kelvin[name](tempr))
+
+
+class Celsius(Temperature):
+    def __init__(self, tempr) -> None:
+        def fn_to_kelvin(x): return x+273.15
+        def fn_from_kelvin(x): return x-273.5
+        name = 'Celsius'
+        super().__init__(name, fn_to_kelvin, fn_from_kelvin)
+        self.tempr_in_kelvin = Temperature.converter_to_kelvin[name](tempr)
+        self.tempr=tempr
+    def convert_to(self, name):
+        return (super().convert_to(self.tempr_in_kelvin,name))
+
+
+class Fahrenheit(Temperature):
+    def __init__(self, tempr) -> None:
+        def fn_to_kelvin(x): return (x+459.67)*5/9
+        def fn_from_kelvin(x): return x*9/5-459.67
+        name = 'Fahrenheit'
+        super().__init__(name, fn_to_kelvin, fn_from_kelvin)
+        self.tempr_in_kelvin = Temperature.converter_to_kelvin[name](tempr)
+        self.tempr=tempr
+
+class Kelvin(Temperature):
+    def __init__(self, tempr) -> None:
+        def fn_to_kelvin(x): return (x)
+        def fn_from_kelvin(x): return (x)
+        name = 'Kelvin'
+        super().__init__(name, fn_to_kelvin, fn_from_kelvin)
+        self.tempr_in_kelvin = Temperature.converter_to_kelvin[name](tempr)
+        self.tempr=tempr
+
+
+a=Celsius(50)
+b=Fahrenheit(60)
+
+f=a.convert_to('Fahrenheit')
+
+print(a.tempr, a.tempr_in_kelvin, b.tempr, b.tempr_in_kelvin, f)
+
+    # def k_temp_out(self):
+    #     return(self.k_temp)
+    # def c_temp_out(self):
+    #     return(self.k_temp+273.15)
+    # def f_temp_out(self):
+    #     return(self.k_temp*9/5- - 459.67)
