@@ -10,6 +10,7 @@ class MenuManager():
 
     def __init__(self, menu_file_name) -> None:
         self.menu_file_name = menu_file_name
+        # menu_file_name='/Users/dmitryprigozhin/Desktop/DevIns/00-di-learning/03-week-03/day-04/exercises/exercises-xp-gold-restaurant/restaurant_menu.json'
         with open(menu_file_name, 'r') as f:
             self.__menu_items = json.load(f)
 
@@ -17,19 +18,21 @@ class MenuManager():
         i = [i for i, x in enumerate(
             self.__menu_items['items']) if x['name'] == name]
         if i:
-            print("The dish is already on the menu. Its price will be changed")
+            #print("The dish is already on the menu. Its price will be changed")
             self.__menu_items['items'][i[0]]['price']=price
+            return False
         else:
             self.__menu_items['items'].append({'name': name, 'price': price})
+            return True
 
     def remove_item(self, name):
         i = [i for i, x in enumerate(
             self.__menu_items['items']) if x['name'] == name]
         if i:
             self.__menu_items['items'].pop(i[0])
-            print("Item deleted successfully")
+            return True
         else:
-            print("There is no menu item with that name")
+            return False
     def save_to_file(self):
         with open(self.menu_file_name, 'w') as f:
             json.dump(self.__menu_items,f,indent=2)
