@@ -1,6 +1,10 @@
 import urllib.request 
 import urllib
 import random
+import json
+
+# --------- Exercise 01 ------------
+print("\nExercise 01")
 
 # def get_words_from_url():
 #     file_data=""
@@ -35,3 +39,31 @@ def main():
     print (get_random_sentence(phrase_len,file_data))
 
 main()
+
+# --------- Exercise 02 ------------
+print("\nExercise 02")
+sampleJson = """{ 
+   "company":{ 
+      "employee":{ 
+         "name":"emma",
+         "payable":{ 
+            "salary":7000,
+            "bonus":800
+         }
+      }
+   }
+}"""
+
+j_string = json.loads(sampleJson)
+print(j_string)
+print(j_string['company']['employee']['payable']['salary'])
+j_string['company']['employee']['payable']['salary']+=700
+print(j_string['company']['employee']['payable']['salary'])
+j_string['company']['employee']['birth_date']='12/12/2021'
+print(j_string)
+back_to_json=json.dumps(j_string, indent=2, sort_keys=True)
+print (back_to_json)
+
+with open("exers_02.json",'w') as f:
+    json.dump(j_string, f, indent=2)
+    
