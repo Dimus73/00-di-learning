@@ -1,0 +1,34 @@
+{
+  "players": [
+    {
+      "Name": "Masha",
+      "Age": "25",
+      "Strength": 10,
+      "Dexterity": 12,
+      "Constitution": 14,
+      "Intelligence": 18,
+      "Wisdom": 9,
+      "Charisma": 12
+    },
+    {
+      "Name": "Dasha",
+      "Age": "10",
+      "Strength": 15,
+      "Dexterity": 17,
+      "Constitution": 10,
+      "Intelligence": 15,
+      "Wisdom": 15,
+      "Charisma": 12
+    },
+    {
+      "Name": "Petia",
+      "Age": "40",
+      "Strength": 13,
+      "Dexterity": 12,
+      "Constitution": 14,
+      "Intelligence": 9,
+      "Wisdom": 12,
+      "Charisma": 16
+    }
+  ]
+}
