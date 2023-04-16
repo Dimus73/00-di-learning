@@ -67,6 +67,15 @@ from students
 ORDER by last_name 
 LIMIT 3 OFFSET 2;
 
+select a.first_name, a.last_name, a.birth_date
+from (select * from students LIMIT 4) as a
+order by a.last_name;
+
+select first_name, last_name, birth_date 
+from students 
+ORDER by birth_date DESC
+LIMIT 1;
+
 
 
 
