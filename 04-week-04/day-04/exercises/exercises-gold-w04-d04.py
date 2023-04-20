@@ -12,9 +12,9 @@ def load_data(connection):
     with connection.cursor() as cur:
         cur.execute(f'SELECT login,pw FROM {TABLENAME}')
         result=cur.fetchall()
-    for p in result:
-        users=dict(result)
-    return users
+    # for p in result:
+    #     users=dict(result)
+    return dict(result)
 
 def add_user_to_base(connection, login, pw):
     with connection.cursor() as cur:
@@ -33,11 +33,13 @@ while True:
         pw=input('Enter passwod: ')
         if login in users.keys():
             if users[login] == pw:
+                print("You have successfully logged in")
                 logged_in=login
         else:
             like_singup=input("Would you like to register? (y/n): ")
             if like_singup == 'y':
                 pw=input("Please enter your new password: ")
                 add_user_to_base(connection,login,pw)
+                print("Account created successfully.")
 
     
