@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	{% if people.len > 1 %}
+			<h1>This is a list of people:</h1>
+	{% else %}
+			<h1>Personal information:</h1>
+	{% endif %}
+  {% for n in people%}
+	{% comment %} {{n}} {% endcomment %}
+		<ul> <b>{{n.name}}</b>
+		{% for k,p in n.items %}
+				{% if k != 'id' and k != 'name'%}
+						<li> {{k}}:{{p}} </li>
+				{%endif%}
+		{% endfor %}
+		</ul>
+	{%endfor%}
+</body>
+</html>
