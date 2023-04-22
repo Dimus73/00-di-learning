@@ -16,7 +16,8 @@
 		{% for k,p in context.all_info_dict.items %}
 				<li> {{k}}:{{p}} </li>
 		{% endfor %}
-		
+		Photo:{{ MEDIA_ROOT }} {{BASE_DIR}}
+		<img width=200px src="/media/{{ context.photo }}"
 	</ul> 
 </body>
 </html>
