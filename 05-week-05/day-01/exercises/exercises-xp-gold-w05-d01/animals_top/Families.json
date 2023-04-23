@@ -1,0 +1,12 @@
+{
+  "animals": [
+    {
+      "id": 1,
+      "name": "Felidae"
+    },
+    {
+      "id": 2,
+      "name": "Caninae"
+    }
+  ]
+}

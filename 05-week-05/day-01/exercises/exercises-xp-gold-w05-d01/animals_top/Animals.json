@@ -1,0 +1,54 @@
+{
+  "animals": [
+    {
+      "id": 1,
+      "name": "test",
+      "legs": 4,
+      "weight": 22.0,
+      "height": 34.0,
+      "speed": 48,
+      "photo": "/media/photos_n/test.jpg",
+      "family": 1
+    },
+    {
+      "id": 2,
+      "name": "Dog",
+      "legs": 4,
+      "weight": 5.67,
+      "height": 4.2,
+      "speed": 34,
+      "photo": "/media/photos_n/dog.jpg",
+      "family": 2
+    },
+    {
+      "id": 3,
+      "name": "Domestic Cat",
+      "legs": 2,
+      "weight": 5.67,
+      "height": 4.2,
+      "speed": 34,
+      "photo": "/media/photos_n/cat.jpeg",
+      "family": 1
+    },
+    {
+      "id": 4,
+      "name": "Panther",
+      "legs": 2,
+      "weight": 5.67,
+      "height": 4.2,
+      "speed": 34,
+      "photo": "/media/photos_n/pantera.jpg",
+      "family": 1
+    },
+    {
+      "id": 5,
+      "name": "Delfin",
+      "legs": 0,
+      "weight": 90.0,
+      "height": 40.0,
+      "speed": 50,
+      "photo": "/media/photos_n/delfin.jpg",
+      "family": 1
+    }
+  ]
+}
