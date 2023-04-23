@@ -8,12 +8,12 @@
 </head>
 <body>
 	<h1>This is family page.</h1>
-	<h1>Family ID:{{family_id}}</h1>
-	<br>{{animals_name}}<br>
+	<h1>Family name: {{family}}</h1>
+	<br>{{animals}}<br>
 	<h1>This family contains the following animals:</h1>
 	<ul>
-	{% for p in animals_name %}
-	   <li>{{p}}</li>
+	{% for p in animals %}
+	   <li>{{p.name}}</li>
 	{%endfor%}
 	</ul>
 </body>

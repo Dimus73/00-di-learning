@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link type="text/css" href="{% static 'info/css/animals_list.css' %}" ref = "stylesheet" />
+	<link type="text/css" href="{% static 'women/css/styles.css' %}" rel="stylesheet" />
 </head>
 <body>
-	<h1>This is animals list.:</h1>
+	<div class="test_test">This is animals list.:</div>
 	<ul>
 	{% for p in animals %}
 			<li> <a href = "{% url 'animal_page' p.pk %}" > {{p.name}} </a> </li>
