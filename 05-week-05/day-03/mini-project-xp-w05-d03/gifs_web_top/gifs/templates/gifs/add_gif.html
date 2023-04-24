@@ -10,7 +10,7 @@
 
 <h1>Add gif page ++</h1>
 
-<form >
+<form action="{% url 'add_gif' %}" method = "post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Добавить</button>

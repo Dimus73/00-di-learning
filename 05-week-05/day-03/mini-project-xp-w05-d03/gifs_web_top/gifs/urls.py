@@ -19,6 +19,6 @@ from . import views
 
 urlpatterns = [
     # path('add_page/', ,'add_page_name' views.persons),
-    path('', views.add_gif),
+    path('', views.add_gif, name= 'add_gif'),
 
 ]
