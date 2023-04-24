@@ -18,6 +18,6 @@ def persons (request, info:str):
     context['person'] = person
     print(person)
     if not person is None:
-        return render(request, 'persan-info.html', context)
+        return render(request, 'number/persan-info.html', context)
     else:
-        return render(request, 'persan-no.html', context)
+        return render(request, 'number/persan-no.html', context)
