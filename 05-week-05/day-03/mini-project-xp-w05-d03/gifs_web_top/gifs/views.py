@@ -15,6 +15,7 @@ def add_gif(request):
 #Here we write the data. Moreover, you need to register two databases
             gif_base_object=Gif(title=f.cleaned_data['title'], url=f.cleaned_data['url'], uploader_name=f.cleaned_data['uploader_name'])
             gif_base_object.save()
+            gif_base_object.category_set.add(f.cleaned_data['categories'])
     else:
         print("Это НЕ POST запрос", request.method )
         f=AddGifForm()
