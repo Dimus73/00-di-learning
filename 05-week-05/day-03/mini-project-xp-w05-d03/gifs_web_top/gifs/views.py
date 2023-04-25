@@ -70,3 +70,13 @@ def category(request, c_id):
         print(p.url)
     print ('Вызываем форму', context)
     return render(request, 'gifs/category.html', context)
+
+def one_gif(request, gif_id):
+    try:
+        gif=Gif.objects.get(pk=gif_id)
+    except Gif.DoesNotExist:
+        context={'menu':menu, 'gif_id':gif_id}
+        return render(request, 'gifs/noimge.html', context)
+    context={'menu':menu, 'gif':gif}
+    print ('Вызываем форму', context)
+    return render(request, 'gifs/gif_by_id.html', context)

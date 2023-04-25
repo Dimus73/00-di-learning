@@ -1,0 +1,18 @@
+
+{% extends 'gifs/base.html' %}
+ 
+{% block content %}
+
+<h1>This is a ONE image page</h1>
+<div>
+				<div style="display: inline-block;">
+					<img src="{{gif.url}}" alt="" width="200px" height="200px"> <br>
+					Title:{{gif.title}} <br>
+					Uploader:{{gif.uploader_name}} <br>
+					Created at:{{gif.created_at}}<br> <br> 
+				</div>
+</div>
+
+{% endblock %}
+</body>
+</html>

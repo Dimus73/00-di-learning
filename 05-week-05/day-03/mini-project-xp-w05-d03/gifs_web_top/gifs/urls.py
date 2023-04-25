@@ -23,4 +23,5 @@ urlpatterns = [
     path('add_page', views.add_gif, name= 'add_gif'),
     path('add_category', views.add_category, name= 'add_category'),
     path('category/<int:c_id>/', views.category, name= 'category_path'),
+    path('one_gif/<int:gif_id>/', views.one_gif, name= 'one_gif_path'),
 ]
