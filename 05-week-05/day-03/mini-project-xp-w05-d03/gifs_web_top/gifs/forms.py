@@ -20,4 +20,8 @@ class AddGifForm(forms.Form):
     title = forms.CharField(max_length=50)
     url = forms.URLField()
     categories=forms.ModelChoiceField(queryset=Category.objects.all(), empty_label='choice')
+    
+class AddCategory(forms.Form):
+    category=forms.CharField(max_length=50)
+    
  

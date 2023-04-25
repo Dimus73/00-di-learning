@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add_page', include('gifs.urls'))
+    path('', include('gifs.urls'))
 ]

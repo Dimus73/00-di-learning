@@ -3,7 +3,15 @@
  
 {% block content %}
 
-<h1>Add gif page ++</h1>
+<h1>Add Category page ++</h1>
+<br>
+<h3>Category list:</h3>
+
+<ul>
+  {% for p in category_list%}
+  <li> <a href ="{% url 'category_path' p.pk %}" > {{p.name}} </a></li>
+  {% endfor %}
+</ul>
 
 <form action="{% url 'add_gif' %}" method = "post">
   {% csrf_token %}

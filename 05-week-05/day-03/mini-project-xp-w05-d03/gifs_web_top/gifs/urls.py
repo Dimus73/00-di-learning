@@ -19,6 +19,8 @@ from . import views
 
 urlpatterns = [
     # path('add_page/', ,'add_page_name' views.persons),
-    path('', views.add_gif, name= 'add_gif'),
-
+    path('home', views.home, name= 'home'),
+    path('add_page', views.add_gif, name= 'add_gif'),
+    path('add_category', views.add_category, name= 'add_category'),
+    path('category/<int:c_id>/', views.category, name= 'category_path'),
 ]

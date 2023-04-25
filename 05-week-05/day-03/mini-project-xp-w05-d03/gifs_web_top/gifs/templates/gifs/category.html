@@ -1,0 +1,22 @@
+
+{% extends 'gifs/base.html' %}
+ 
+{% block content %}
+
+<h1>Category: <u>{{ cat_name }}</u></h1>
+<br>
+<ul>
+  {% for p in gif_list%}
+  <li> 
+    <img src="{{p.url}}" alt=""> <br>
+    Title:{{p.title}} <br>
+    Uploader:{{p.uploader_name}} <br>
+    Created at:{{p.created_at}}<br> <br> 
+  </li>
+  {% endfor %}
+</ul>
+
+
+	{% endblock %}
+</body>
+</html>
