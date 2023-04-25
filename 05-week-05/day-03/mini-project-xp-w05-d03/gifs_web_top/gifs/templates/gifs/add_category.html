@@ -16,7 +16,7 @@
 <form action="{% url 'add_gif' %}" method = "post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Add gif</button>
+  <button type="submit">Add category</button>
 	<button type="reset">Clear form</button>
 </form>
 
