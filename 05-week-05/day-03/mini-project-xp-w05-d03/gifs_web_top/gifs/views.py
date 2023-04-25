@@ -10,7 +10,11 @@ menu = [{'title': "Home", 'url_name': 'home'},
 
 # Create your views here.
 def home(request):
-    context={'menu':menu}
+    gif_list=Gif.objects.all()
+    context={'menu':menu, 'gif_list':gif_list}
+    for p in gif_list:
+        print(p.url)
+    print ('Вызываем форму', context)
     return render(request, 'gifs/home.html', context)
 
 

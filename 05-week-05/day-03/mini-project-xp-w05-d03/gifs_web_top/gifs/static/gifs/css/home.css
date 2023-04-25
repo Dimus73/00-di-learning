@@ -1,0 +1,7 @@
+#gif_blok{
+	display:inline-flex; 
+	flex-wrap: wrap;
+	width: 90vw;
+	position: relative; 
+	justify-content:space-around;
+}

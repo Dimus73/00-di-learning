@@ -4,6 +4,20 @@
 {% block content %}
 
 <h1>This is a home page</h1>
+<div>
+	<ul id="gif_blok">
+		{% for p in gif_list%}
+		<li style="display:inline-flex;"> 
+			<div style="display: inline-block;">
+				<img src="{{p.url}}" alt="" width="200px" height="200px"> <br>
+				Title:{{p.title}} <br>
+				Uploader:{{p.uploader_name}} <br>
+				Created at:{{p.created_at}}<br> <br> 
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
 
 {% endblock %}
 </body>
