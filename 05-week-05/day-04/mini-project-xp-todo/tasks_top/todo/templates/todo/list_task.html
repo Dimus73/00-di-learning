@@ -1,0 +1,31 @@
+{% extends 'todo/base.html' %}
+ 
+{% block content %}
+<h1>{{title}}</h1>
+Страница Cо списком дел<br>
+<table>
+	<tr>
+		<th id="f_row">Tilte</th>
+		<th>Has done</th>
+		<th>Completion</th>
+		<th>Deadline</th>
+		<th>Action</th>
+
+		{% for p in task_list%}
+			<tr>
+				<td>{{p.title}}</td>
+				<td>{{p.has_been_done}}</td>
+				<td>{{p.date_completion}}</td>
+				<td>{{p.deadline_date}}</td>
+				<td>
+					<form action="{% url 'list_task_path' %}" method = "post">
+						{% csrf_token %}
+						<input type="hidden" value="{{p.pk}}" name="id_task">
+						<button type="submit" value="{{p.pk}}" name="button_id">  Done </button>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+</table>
+
+{% endblock %}
