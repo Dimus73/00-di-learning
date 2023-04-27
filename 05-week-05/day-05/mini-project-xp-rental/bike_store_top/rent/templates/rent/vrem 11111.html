@@ -1,0 +1,15 @@
+{% extends 'todo/base.html' %}
+ 
+{% block content %}
+<h1>{{title}}</h1>
+Страница дополнения дел<br>
+<form action="{% url 'add_task_path' %}" method = "post">
+	{% csrf_token %}
+	{{form.as_ul}}
+	<br>
+	<button type="submit">Add task</button>
+	<button type="reset">Clear form</button>
+</form>
+
+
+{% endblock %}
