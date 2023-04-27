@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from .forms import *
 from .models import *
+from datetime import date
 
-menu = [{'title': "Home", 'url_name': 'home'},
-        {'title': "Add gif", 'url_name': 'add_gif'},
-        {'title': "Add category", 'url_name': 'add_category'},
+menu = [{'title': "Home", 'url_name': 'list_task_path'},
+        {'title': "Add new task", 'url_name': 'add_task_path'},
+        # {'title': "Add category", 'url_name': 'add_category'},
         # {'title': "Войти", 'url_name': 'login'}
 ]
 
 # Create your views here.
+
 def add_task (request):
     # print('Пришли в функцию')
     if request.method == 'POST':
@@ -32,12 +34,16 @@ def add_task (request):
 def list_task (request):
     if request.method == 'POST':
         print(request, request.POST['button_id'])
-        f = AddTask(request.POST)
-        if f.is_valid():
-            f.save()
-            f=AddTask()
+        # Change case status to done, add date
+        record_id=int(request.POST['button_id'])
+        record=ToDo.objects.get(pk=record_id)
+        record.has_been_done=True
+        now=date.today()
+        # record.date_completion=now.strftime("%Y-%m-%d")
+        record.done()
+        record.save()
     else:
         f=AddTask()
-    task_list=ToDo.objects.all()
+    task_list=ToDo.objects.all().order_by('title')
     context={'task_list':task_list, 'menu':menu}
     return render(request, 'todo/list_task.html', context)

@@ -19,5 +19,5 @@ from . import views
 
 urlpatterns = [
     path('add_task/', views.add_task, name="add_task_path" ),
-    path('list_task/', views.list_task, name="list_task_path" ),
+    path('', views.list_task, name="list_task_path" ),
 ]
