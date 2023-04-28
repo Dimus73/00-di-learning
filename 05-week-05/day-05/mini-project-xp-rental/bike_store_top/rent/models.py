@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.formfields import PhoneNumberField
+import datetime
 
 # Create your models here.
 
@@ -31,7 +32,7 @@ class Vehicle (models.Model):
     real_cost      = models.FloatField (blank=False)
     size           = models.ForeignKey (VehicleSize, on_delete=models.DO_NOTHING)
     def __str__ (self):
-        return f"Model: {self.vehicle_type} {self.date_created}"
+        return f"Model: {self.vehicle_type}-{self.size}"
     
 class Rental (models.Model):
     rental_date    = models.DateField()
@@ -40,6 +41,14 @@ class Rental (models.Model):
     vehicle        = models.ForeignKey(Vehicle, on_delete=models.DO_NOTHING)
     def __str__ (self):
         return f"Rent: {self.customer} {self.vehicle}"
+    
+    def rent_duration(self):
+        r_days = datetime.date.today()-self.rental_date
+        return (f"{r_days.days} day(s) in rent")
+        
+    def rent_status(self):
+        return True if self.return_date is None else False
+
     
 class RentalRate(models.Model):
     daily_rate     = models.FloatField()
