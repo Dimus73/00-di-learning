@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import *
-from django.views.generic import ListView
+from .forms import *
+from django.views.generic import ListView, DeleteView, CreateView
+from django.urls import reverse_lazy
 
 menu =   [{'title': "Home",      'url_name': 'home_path'},
           {'title': "Rentals",   'url_name': 'rentals_list_path'},
@@ -55,16 +57,22 @@ def customer (request, c_id):
         context={'menu':menu, 'title':'Error', 'message':message, 'number':number}
         return render(request, 'rent/error.html', context)
 
-def vehicle (request, v_id):
-    try:
-        v = Vehicle.objects.get(pk=v_id)
-        context={'menu':menu, 'title':'Vehicle info', 'v':v}
-        return render(request, 'rent/vehicle.html', context)
-    except Vehicle.DoesNotExist:
-        message = f"Error: We couldn't find a vehicle with the ID:"
-        number = v_id
-        context={'menu':menu, 'title':'Error', 'message':message, 'number':number}
-        return render(request, 'rent/error.html', context)
+class ShowVehicle(DeleteView):
+    model = Vehicle
+    template_name = 'rent/vehicle.html'
+    pk_url_kwarg = 'v_id'
+    context_object_name='v'
+
+# def vehicle (request, v_id):
+#     try:
+#         v = Vehicle.objects.get(pk=v_id)
+#         context={'menu':menu, 'title':'Vehicle info', 'v':v}
+#         return render(request, 'rent/vehicle.html', context)
+#     except Vehicle.DoesNotExist:
+#         message = f"Error: We couldn't find a vehicle with the ID:"
+#         number = v_id
+#         context={'menu':menu, 'title':'Error', 'message':message, 'number':number}
+#         return render(request, 'rent/error.html', context)
 
 class CastomerList(ListView):
     model=Customer
@@ -76,6 +84,12 @@ class CastomerList(ListView):
         context['title'] = 'User list page'
         context['menu'] = menu
         return context
+
+class AddCustomer(CreateView):
+    form_class = AddCustomerForm
+    template_name ='rent/add_customer.html'
+    success_url = reverse_lazy('customer_list_path')
+
     
 class VehicleList(ListView):
     model=Vehicle

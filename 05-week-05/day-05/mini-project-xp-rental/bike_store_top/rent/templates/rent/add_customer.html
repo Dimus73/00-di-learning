@@ -1,0 +1,18 @@
+{% extends 'rent/base.html' %}
+ 
+{% block content %}
+<h1>{{title}}</h1>
+<br>Страница: Добавление пользовотеля<br>
+  <div class="container">
+		<form action=" {% url 'add_customer_path' %}" method="post" class="form-floating row g-6 p-4 col-6">
+			{% csrf_token %}
+
+			{% for f in form %}
+				<p><label class="" for="{{ f.id_for_lable }}"> {{f.label}}</label>{{f}}</p>
+				<div class="">{{f.error}}</div>
+			{% endfor %}
+			<button type="submit">Add customer</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
