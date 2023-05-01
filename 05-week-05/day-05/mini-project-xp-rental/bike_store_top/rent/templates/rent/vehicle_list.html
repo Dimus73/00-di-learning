@@ -1,0 +1,39 @@
+{% extends 'rent/base.html' %}
+ 
+{% block content %}
+<h1>{{title}}</h1>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<table class="table table-striped table-hover" style="font-size: 10px;">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Type</th>
+						<th>Create date</th>
+						<th>Cost</th>
+						<th>Size</th>
+						<th>In rent</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for p in object_list %}
+						<tr>
+							<td><a href="{% url 'vehicle_path' p.pk %}"> {{p.pk}}</a></td>
+							<td>{{p.vehicle_type}}</td>
+							<td>{{p.size}}</td>
+							<td>{{p.date_created}}</td>
+							<td>{{p.real_cost}}</td>
+							{% if p.is_in_rent %}
+								<td>In rent</td>
+							{% else %}
+								<td>Free</td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
