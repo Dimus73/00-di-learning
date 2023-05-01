@@ -33,21 +33,32 @@ class Vehicle (models.Model):
     size           = models.ForeignKey (VehicleSize, on_delete=models.DO_NOTHING)
     def __str__ (self):
         return f"Model: {self.vehicle_type}-{self.size}"
-    
+    def is_in_rent(self):
+        rent_list=Rental.objects.filter(vehicle=self.pk,return_date__isnull=True)
+        return True if rent_list else False    
 class Rental (models.Model):
     rental_date    = models.DateField()
     return_date    = models.DateField(blank=True, null=True)
     customer       = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
     vehicle        = models.ForeignKey(Vehicle, on_delete=models.DO_NOTHING)
+
     def __str__ (self):
         return f"Rent: {self.customer} {self.vehicle}"
-    
+    class Meta:
+        ordering = ('-return_date', 'rental_date')
+
     def rent_duration(self):
         r_days = datetime.date.today()-self.rental_date
         return (f"{r_days.days} day(s) in rent")
         
     def rent_status(self):
         return True if self.return_date is None else False
+    
+    def vehicle_in_rent(self):
+        v_list=Rental.objects.filter(return_date__isnull=True)
+        return v_list
+    
+
 
     
 class RentalRate(models.Model):

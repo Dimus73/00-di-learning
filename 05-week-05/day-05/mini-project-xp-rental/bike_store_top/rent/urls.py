@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import views 
+from .views import CastomerList, VehicleList
 
 urlpatterns = [
     path('', views.home, name="home_path" ),
@@ -23,4 +24,6 @@ urlpatterns = [
     path('rental/<int:r_id>', views.rental, name="rental_path" ),
     path('customer/<int:c_id>', views.customer, name="customer_path"),
     path('vehicle/<int:v_id>', views.vehicle, name="vehicle_path"),
+    path('customer/', CastomerList.as_view(), name="customer_list_path"),
+    path('vehicle/', VehicleList.as_view(), name="vehicle_list_path"),
 ]

@@ -1,0 +1,35 @@
+{% extends 'rent/base.html' %}
+ 
+{% block content %}
+<h1>{{title}}</h1>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<table class="table table-striped table-hover" style="font-size: 10px;">
+				<thead>
+					<tr>
+						<th>First_name</th>
+						<th>Last_name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>City</th>
+						<th>Country</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for p in object_list %}
+						<tr>
+							<td><a href="{% url 'customer_path' p.pk %}"> {{p.first_name}}</a></td>
+							<td>{{p.last_name}}</td>
+							<td>{{p.email}}</td>
+							<td>{{p.phone_number}}</td>
+							<td>{{p.city}}</td>
+							<td>{{p.country}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

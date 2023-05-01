@@ -4,12 +4,6 @@
 <h1>{{title}}</h1>
 <br>Страница: список аренд<br>
 <div class="container">
-	<form action=" {% url 'rentals_list_path' %}" method="post" class="form-floating row g-6 p-4 col-6">
-		{% csrf_token %}
-		<input type="checkbox" id="only_in_rental"  name="in_rent" {{only_rent}} >
-    <label class="form-check-label" for="only_in_rental">Only not finish rental</label>
-		<button class="btn btn-primary g-2" type="submit"  value="357" name="search"> Order</button>
-	</form>
 	<div class="row">
     <div class="col">
 			<table class="table table-striped table-hover">
