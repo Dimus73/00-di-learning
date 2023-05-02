@@ -1,0 +1,16 @@
+ {% extends 'partials/navbar.html' %}
+ 
+ {% block content%}
+<div class="container">
+ <h1>{{title}}</h1>
+ <form action="{% url 'add_film_path' %}" method="post" class="form-floating row g-6 p-4 col-6 col-sm-12">
+	<div class="col">
+		{% csrf_token %}
+		{{form.as_p}}
+	</div>
+	<button type="submit" class="btn btn-primary g-2">Add</button>
+</form>
+
+</div>
+
+ {% endblock%}
