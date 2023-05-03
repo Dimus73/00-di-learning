@@ -18,7 +18,7 @@ class Film(models.Model):
     created_in_country       = models.ForeignKey (Country, on_delete=models.PROTECT, related_name='country_created')
     available_in_countries   = models.ManyToManyField (Country, related_name='country_avalible')
     category                 = models.ManyToManyField (Category)
-    director                 = models.ManyToManyField ('Director')
+    director                 = models.ManyToManyField ('Director', related_name='films')
     def __str__ (self):
         return self.title
     
