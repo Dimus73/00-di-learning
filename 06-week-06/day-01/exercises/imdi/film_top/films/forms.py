@@ -31,3 +31,10 @@ class AddDirectorForm (forms.ModelForm):
     class Meta:
         model = Director
         fields = '__all__'
+    
+    films = forms.ModelMultipleChoiceField(queryset=Film.objects.all())
+
+class filmCardForm (forms.ModelForm):
+    class Meta:
+        model = Film
+        fields = ['title', 'release_date', 'created_in_country', 'category', 'director']

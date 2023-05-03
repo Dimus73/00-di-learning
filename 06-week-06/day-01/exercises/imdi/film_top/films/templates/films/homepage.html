@@ -2,6 +2,44 @@
  
  {% block content%}
 <div class="container">
- Это homepage content
+	<h1>{{title}}</h1>
+	<div class="row">
+		{% for p in object_list %}
+		<div class="card m-2" style="width: 18rem;">
+			<div class="card-body">
+				<h3 class="card-title">{{ p.title }}</h3>
+				<h6 class="card-subtitle mb-2 text-body-secondary">Date:{{p.release_date}}</h6>
+				<table class="table table-borderless table-sm">
+          <tbody>
+            {% for c in p.category.all %}
+            <tr>
+              <td>{% if forloop.first %} 
+                    Category:
+                  {% endif %}
+              </td>
+              <td>{{c}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+				<p class="card-text">Country: {{p.created_in_country}}</p>
+				<table class="table table-borderless table-sm">
+          <tbody>
+            {% for c in p.director.all %}
+            <tr>
+              <td>{% if forloop.first %} 
+                    Director:
+                  {% endif %}
+              </td>
+              <td><a href="{% url 'edit_director_path' c.pk %}" class="card-link">{{c}}</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+				<p><a href="{{p.pk}}" class="card-link">Modify the film</a></p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </div>
  {% endblock%}
