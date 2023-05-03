@@ -36,7 +36,7 @@
             {% endfor %}
           </tbody>
         </table>
-				<p><a href="{{p.pk}}" class="card-link">Modify the film</a></p>
+				<p><a href="{% url 'edit_film_path' p.pk %}" class="card-link">Modify the film</a></p>
 			</div>
 		</div>
 		{% endfor %}

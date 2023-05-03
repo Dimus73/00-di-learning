@@ -33,7 +33,7 @@ class EditDirector(UpdateView):
 
 class EditFilm(UpdateView):
     model = Film
-    fields = ['title', 'release_dat', 'created_in_country', 'available_in_countries', 'category', 'director']
+    fields = ['title', 'release_date', 'created_in_country', 'available_in_countries', 'category', 'director']
     template_name = 'film/editFilm.html'
     context_object_name = 'post'
     title = "Edit film"

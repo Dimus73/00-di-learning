@@ -3,7 +3,7 @@
  {% block content%}
 <div class="container">
  <h1>{{title}}</h1>
- <form action="{% url 'edit_director_path' post.pk %}" method="post" class="form-floating row g-6 p-4 col-6 col-sm-12">
+ <form action="{% url 'edit_film_path' post.pk %}" method="post" class="form-floating row g-6 p-4 col-6 col-sm-12">
 	<div class="col">
 		{% csrf_token %}
 		{{form}}
