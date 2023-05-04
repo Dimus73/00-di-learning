@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.shortcuts      import render
 from .models               import *
 from .forms                import AddFilmForm, AddDirectorForm
@@ -5,40 +6,49 @@ from django.shortcuts      import render, redirect, get_object_or_404
 from django.views.generic  import ListView, UpdateView
 from django.urls           import reverse_lazy
 from django                import forms
+from utils                 import *
 
-menu = [{'title': "Home", 'url_name': 'homepage_path'},
-        {'title': "Add film", 'url_name': 'add_film_path'},
-        {'title': "Add Director", 'url_name': 'add_director_path'},
-        # {'title': "Favorites", 'url_name': 'favorites_path'}
-        ]
 
 
 
 # Create your views here.
-class HomePageView(ListView):
+class HomePageView(DataMixin, ListView):
     model=Film
     fialds='__all__'
-    title = "Homepage"
     template_name = 'films/homepage.html'
-    extra_context = {'menu': menu, 'title':title}
 
-class EditDirector(UpdateView):
+    def get_context_data(self, *,object_list=None, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title = "Homepage")
+        context = dict(list(context.items()) + list(c_def.items()))
+        return context
+
+
+class EditDirector(DataMixin, UpdateView):
     model = Director
     fields = ['first_name', 'last_name']
     template_name = 'director/editDirector.html'
     context_object_name = 'post'
-    title = "Edit director"
-    extra_context = {'menu': menu, 'title':title}
     success_url = reverse_lazy('homepage_path')
 
-class EditFilm(UpdateView):
+    def get_context_data(self, *,object_list=None, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title = "Edit director")
+        context = dict(list(context.items()) + list(c_def.items()))
+        return context
+
+class EditFilm(DataMixin, UpdateView):
     model = Film
     fields = ['title', 'release_date', 'created_in_country', 'available_in_countries', 'category', 'director']
     template_name = 'film/editFilm.html'
     context_object_name = 'post'
-    title = "Edit film"
-    extra_context = {'menu': menu, 'title':title}
     success_url = reverse_lazy('homepage_path')
+
+    def get_context_data(self, *,object_list=None, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title = "Edit film")
+        context = dict(list(context.items()) + list(c_def.items()))
+        return context
 
 
 
