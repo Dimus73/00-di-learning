@@ -21,6 +21,8 @@ class HomePageView(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title = "Homepage")
         context = dict(list(context.items()) + list(c_def.items()))
+        print(context)
+        print('*************', self.request.user, self.request.user.groups.all(),self.request.user.is_superuser)
         return context
 
 
