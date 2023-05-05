@@ -27,6 +27,27 @@ class AddFilmForm (forms.ModelForm):
             
 				}
 
+class MyEditFilm (forms.ModelForm):
+    class Meta:
+        model = Film
+        fields = ['title', 'release_date', 'created_in_country', 'available_in_countries', 'category', 'director']
+    img_field = forms.ImageField(label ='sssss' )
+
+    def __init__(self, *args, **kwargs):
+        # kwargs['initial'] = {'img_field':'test/test.jpg'}
+        super(MyEditFilm, self).__init__(*args, **kwargs)
+        # print (f"Это инициализация формы {kwargs}")
+        # print (f"Это img_field до обновленияЖ {self.img_field}")
+
+    def save(self, commit=True):
+        print ('***************************************')        
+        instance = super(MyEditFilm, self).save(commit=False)
+        instance.poster.movie.imagefield = self.cleaned_data['img_field'] # сохраняем данные из связанной модели
+        print ('То что сохраняем :', self.cleaned_data['img_field'])
+        if commit:
+            instance.save()
+        return instance
+
 class AddDirectorForm (forms.ModelForm):
     class Meta:
         model = Director

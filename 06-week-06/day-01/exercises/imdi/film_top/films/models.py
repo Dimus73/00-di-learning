@@ -27,6 +27,10 @@ class Director(models.Model):
     last_name                = models.CharField (max_length=50, blank=False)
     def __str__ (self):
         return f"{self.first_name} {self.last_name}"
-    
+
+class Poster(models.Model):
+   imagefield = models.ImageField(blank=True, null=True, upload_to="photos/%Y/%m/%d/")
+   film_id = models.OneToOneField(Film,related_name='movie',on_delete=models.CASCADE)
+       
 
 

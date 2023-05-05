@@ -10,10 +10,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         {% for m in menu %}
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url m.url_name %}">{{ m.title }}</a>
-          </li>
-        {% endfor %}
+          {% if m.for_s_user and request.user.is_superuser %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url m.url_name %}">{{ m.title }}</a>
+            </li>
+          {% elif not m.for_s_user %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url m.url_name %}">{{ m.title }}</a>
+            </li>
+          {% endif %}
+      {% endfor %}
         <li class="nav-item ">
           <a class="nav-link ">Disabled</a>
         </li>

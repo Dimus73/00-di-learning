@@ -31,12 +31,18 @@
                     Director:
                   {% endif %}
               </td>
-              <td><a href="{% url 'edit_director_path' c.pk %}" class="card-link">{{c}}</a></td>
-            </tr>
+                {% if request.user.is_superuser %}
+                  <td><a href="{% url 'edit_director_path' c.pk %}" class="card-link">{{c}}</a></td>
+                {% else %}
+                  <td>{{c}}</td>
+                {% endif %}
+              </tr>
             {% endfor %}
           </tbody>
         </table>
-				<p><a href="{% url 'edit_film_path' p.pk %}" class="card-link">Modify the film</a></p>
+      {% if request.user.is_superuser %}
+        <p><a href="{% url 'edit_film_path' p.pk %}" class="card-link">Modify the film</a></p>
+      {% endif %}
 			</div>
 		</div>
 		{% endfor %}

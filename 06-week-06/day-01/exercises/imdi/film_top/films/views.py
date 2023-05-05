@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.shortcuts      import render
 from .models               import *
-from .forms                import AddFilmForm, AddDirectorForm
+from .forms                import AddFilmForm, AddDirectorForm, MyEditFilm
 from django.shortcuts      import render, redirect, get_object_or_404
 from django.views.generic  import ListView, UpdateView
 from django.urls           import reverse_lazy
@@ -41,7 +41,8 @@ class EditDirector(DataMixin, UpdateView):
 
 class EditFilm(DataMixin, UpdateView):
     model = Film
-    fields = ['title', 'release_date', 'created_in_country', 'available_in_countries', 'category', 'director']
+    # fields = ['title', 'release_date', 'created_in_country', 'available_in_countries', 'category', 'director']
+    form_class = MyEditFilm
     template_name = 'film/editFilm.html'
     context_object_name = 'post'
     success_url = reverse_lazy('homepage_path')
@@ -50,7 +51,17 @@ class EditFilm(DataMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title = "Edit film")
         context = dict(list(context.items()) + list(c_def.items()))
+        # print (f"Это контекст для формы редактирования {context}")
         return context
+    
+    def save(self, commit=True):
+        print ('***************************************')        
+        instance = super(MyEditFilm, self).save(commit=False)
+        instance.poster.movie.imagefield = self.cleaned_data['img_field'] # сохраняем данные из связанной модели
+        print ('То что сохраняем :', self.cleaned_data['img_field'])
+        if commit:
+            instance.save()
+        return instance
 
 
 

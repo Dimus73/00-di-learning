@@ -1,7 +1,7 @@
-menu = [{'title': "Home", 'url_name': 'homepage_path'},
-        {'title': "Add film", 'url_name': 'add_film_path'},
-        {'title': "Add Director", 'url_name': 'add_director_path'},
-        # {'title': "Favorites", 'url_name': 'favorites_path'}
+menu = [{'title': "Home", 'url_name': 'homepage_path', 'for_s_user':False},
+        {'title': "Add film", 'url_name': 'add_film_path', 'for_s_user':True},
+        {'title': "Add Director", 'url_name': 'add_director_path', 'for_s_user':True},
+        # {'title': "Favorites", 'url_name': 'favorites_path', 'for_s_user':True}
         ]
 
 class DataMixin:
