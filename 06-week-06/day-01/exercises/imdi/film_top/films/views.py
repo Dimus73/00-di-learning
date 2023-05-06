@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.shortcuts      import render
 from .models               import *
-from .forms                import AddFilmForm, AddDirectorForm, AddPosterForm
+from .forms                import AddFilmForm, AddDirectorForm, AddPosterForm, AddCommentFom
 # from .forms                import AddFilmForm, AddDirectorForm, AddPosterForm, MyEditFilm
 from django.shortcuts      import render, redirect, get_object_or_404
 from django.views.generic  import ListView, UpdateView, DeleteView
@@ -170,6 +170,34 @@ class DeleteFilm (DataMixin, SuccessMessageMixin, DeleteView):
         c_def = self.get_user_context(title = "Are you sure you want to remove the film:")
         context = dict(list(context.items()) + list(c_def.items()))
         return context
+
+def view_film_detail(request, pk):
+    title = 'Full Film Info Page'
+    context={'menu': menu, 'title':title}
+    if request.method == 'POST':
+        print(request.POST)
+        comm_f = AddCommentFom (request.POST)
+        if comm_f.is_valid():
+            c = comm_f.save(commit=False)
+            c.user=request.user
+            c.film = Film.objects.get (pk=pk)
+            c.save()
+            return redirect('homepage_path')
+    else:
+        film = Film.objects.get (pk=pk)
+        film_info = [film]
+        context ['film_info'] = film_info
+        comm = AddCommentFom()
+        film_forms ={'comm':comm}
+        context ['film_forms'] = film_forms
+        comment_list = RatingCommentnt.objects.filter(film=pk) 
+        print ("Комментарии", comment_list)
+        context ['comment_list'] = comment_list
+
+    return render (request, 'film/filmFullInfo.html', context)
+    
+
+
 
 
 

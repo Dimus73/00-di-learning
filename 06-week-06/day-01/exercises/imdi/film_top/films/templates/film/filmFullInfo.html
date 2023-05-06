@@ -3,25 +3,13 @@
  {% block content%}
 <div class="container">
 	<h1>{{title}}</h1>
-  <ul>
-    {% if messages %}
-       <p>System message:</p>
-      {% for message in messages %}
-        <li> {{message}} </li>
-      {% endfor %}
-    {% endif %}
-  </ul>
 	<div class="row">
-		{% for p in object_list %}
-		<div class="card m-2" style="width: 18rem;">
+		{% for p in film_info %}
+		<div class="col-3"></div>
+		<div class="card m-2 col-6" >
       <img src="/media/{{p.movie.imagefield}}" class="card-img-top" alt="...">
 			<div class="card-body">
 				<h3 class="card-title">{{ p.title }}</h3>
-        <h3 style="color:rgb(182, 182, 33)">
-          {% for i in p.avr_rtng %}
-           &#9733
-          {% endfor %}
-        </h3>
 				<h6 class="card-subtitle mb-2 text-body-secondary">Date:{{p.release_date}}</h6>
 				<table class="table table-borderless table-sm">
           <tbody>
@@ -62,5 +50,40 @@
 		</div>
 		{% endfor %}
 	</div>
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<form action="" method="post" action="/upload/" class="form-floating row g-6 p-4 col-6 col-sm-12">
+				{% csrf_token %}
+				{% for f in film_forms.comm %}
+					<p><label class="form-label" for="{{ f.id_for_label }}"> {{f.label}}: </label>
+						{{ f }}
+					</p>
+					<div class="form-error">{{ f.errors }}</div>
+				{% endfor %}
+				<button type="submit" class="btn btn-primary g-2">Add cooment</button>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<h4>Comments:</h4> 
+		{% for com in comment_list %}
+		<div class="col-6">
+			<div class="card m-3">
+				<div class="card-body">
+					<h5 class="card-title">{{com.user}}:</h5>
+					<p class="card-text">{{com.comment}}</p>
+				</div>
+			</div>
+		</div>
+	
+		{% endfor %}
+	</div>
 </div>
+
+
+</div>
+
  {% endblock%}
+
+

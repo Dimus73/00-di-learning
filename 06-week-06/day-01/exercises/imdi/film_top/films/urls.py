@@ -29,4 +29,5 @@ urlpatterns = [
     path('addfilm/',                 views.add_film,           name='add_film_path'),
     path('editFilm/<int:pk>/',       views.edit_film,          name='edit_film_path'),
     path('deleteFilm/<int:pk>/',     DeleteFilm.as_view(),     name='delete_film_path'),
+    path('fullfilminfo/<int:pk>/',   views.view_film_detail,   name='full_film_info_path'),
 ]
