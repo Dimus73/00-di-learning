@@ -17,12 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls    import path, include
 from .              import views
-from films.views    import HomePageView, EditDirector, EditFilm
+from films.views    import HomePageView, EditDirector, DeleteDirector, DeleteFilm
+# from films.views    import HomePageView, EditDirector, EditFilm
 
 urlpatterns = [
-    path('homepage/',              HomePageView.as_view(), name='homepage_path'),
-    path('addfilm/',               views.add_film,         name='add_film_path'),
-    path('adddirector/',           views.add_director,     name='add_director_path'),
-    path('editDirector/<int:pk>/', EditDirector.as_view(), name='edit_director_path'),
-    path('editFilm/<int:pk>/',     EditFilm.as_view(),     name='edit_film_path'),
+    path('homepage/',                HomePageView.as_view(),   name='homepage_path'),
+    path('adddirector/',             views.add_director,       name='add_director_path'),
+    path('editDirector/<int:pk>/',   EditDirector.as_view(),   name='edit_director_path'),
+    # path('editFilm/<int:pk>/',       EditFilm.as_view(),      name='edit_film_path'),
+    path('deleteDirector/<int:pk>/', DeleteDirector.as_view(), name='delete_director_path'),
+    path('addfilm/',                 views.add_film,           name='add_film_path'),
+    path('editFilm/<int:pk>/',       views.edit_film,          name='edit_film_path'),
+    path('deleteFilm/<int:pk>/',     DeleteFilm.as_view(),     name='delete_film_path'),
 ]

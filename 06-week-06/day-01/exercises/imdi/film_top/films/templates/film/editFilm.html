@@ -3,16 +3,22 @@
  {% block content%}
 <div class="container">
  <h1>{{title}}</h1>
- <form action="" method="post" class="form-floating row g-6 p-4 col-6 col-sm-12">
+ Это ошибки: {{ form.errors }}
+  <form action="" method="post" action="/upload/" enctype="multipart/form-data" class="form-floating row g-6 p-4 col-6 col-sm-12">
 	<div class="col">
 		{% csrf_token %}
-		{{form}}
+		{{forms.f_form}}
+		<br><br>
+		{{forms.p_form}}
 		Тесты <br> 
-		<img src="/media/{{object.movie.imagefield}}" alt="" width="200px"> 
+		<img src="/media/{{instance.imagefield}}" alt="" width="200px"> 
 	</div>
+	{{forms.p_form.imagefield.url}}
 	<button type="submit" class="btn btn-primary g-2">Add</button>
 </form>
-
+<form action="{% url 'delete_film_path' film.pk %}" method="get">
+	<button type="submit" class="btn btn-primary g-2">Delete</button>
+</form>
 </div>
 
  {% endblock%}

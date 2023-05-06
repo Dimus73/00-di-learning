@@ -8,7 +8,12 @@
 		{% csrf_token %}
 		{{form}}
 	</div>
-	<button type="submit" class="btn btn-primary g-2">Add</button>
+	<button type="submit" class="btn btn-primary g-2">Update</button>
+</form>
+<form action="{% url 'delete_director_path' post.pk %}" method="get">
+
+	<button type="submit" class="btn btn-primary g-2">Delete</button>
+
 </form>
 
 </div>
