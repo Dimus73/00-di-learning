@@ -19,6 +19,9 @@ class Film(models.Model):
     available_in_countries   = models.ManyToManyField (Country, related_name='country_avalible')
     category                 = models.ManyToManyField (Category)
     director                 = models.ManyToManyField ('Director', related_name='films')
+    class Meta:
+        ordering=['title']
+
     def __str__ (self):
         return self.title
     
@@ -31,6 +34,9 @@ class Director(models.Model):
 class Poster(models.Model):
    imagefield = models.ImageField(blank=True, null=True, upload_to="photos/%Y/%m/%d/")
    film_id = models.OneToOneField(Film,related_name='movie',on_delete=models.CASCADE)
+
+class RatingComrnt(models.Model):
+    user = models.ForeignKey()
        
 
 
