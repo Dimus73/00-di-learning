@@ -5,15 +5,30 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import StudentSerializer
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_REQUEST, HTTP_202_ACCEPTED, HTTP_204_NO_CONTENT
+from datetime import datetime
 
 # Create your views here.
 
 
 class StudentsView(APIView):
-    def get(self, request, *args, **kwargs):
-        queryset = Student.objects.all()
+    def get(self, request, dj=None, *args, **kwargs):
+        print(request.query_params)
+        format_ddmmyyyy = "%d/%m/%Y"
+        q = request.query_params.get('date_joined', False)
+        if q:
+            print ("********Ther is parametr")
+            try:
+                d = datetime.strptime(q, format_ddmmyyyy)
+                queryset = Student.objects.filter(date_joined__date=d)
+                print ("*********Ther is valid date")
+            except ValueError:
+                print ("**********Ther is NOT valid date")
+                return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+        else:
+            queryset = Student.objects.all()
         serializer = StudentSerializer(queryset, many=True)
         return Response(serializer.data)
+    
     def post(self, request, *args, **kwargs):
         serializer = StudentSerializer(data=request.data)
         if serializer.is_valid():
