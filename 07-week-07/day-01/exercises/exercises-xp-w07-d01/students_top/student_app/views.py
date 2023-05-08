@@ -56,7 +56,7 @@ class StudentViewDetail(APIView):
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
     
     def put(self, request, st_id=0, *args, **kwargs):
-        s=Student.objects.get(pr=st_id)
+        s=Student.objects.get(pk=st_id)
         serializer = StudentSerializer(instance=s, data=request.data)
         if serializer.is_valid():
              serializer.save()
