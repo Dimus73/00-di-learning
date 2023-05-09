@@ -1,5 +1,5 @@
-from django.db import models
-
+from django.db                  import models
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Department (models.Model):
@@ -11,6 +11,7 @@ class Employee (models.Model):
     email           = models.EmailField(null=True, blank=True)
     phone_number    = models.CharField(max_length=15, null=True, blank=True)
     department      = models.ForeignKey(Department, on_delete=models.CASCADE)
+    user						= models.ManyToManyField(User, related_name='reg_user' )
     
 class Task (models.Model):
     name            = models.CharField(max_length=50, db_index=True)

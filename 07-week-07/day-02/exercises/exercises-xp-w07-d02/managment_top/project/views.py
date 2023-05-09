@@ -4,7 +4,8 @@ from .serializers import DepartmentSerializer, EmployeeSerializer, TaskSerialize
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView, ListAPIView, RetrieveAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView
-from rest_framework import mixins
+from rest_framework import mixins, viewsets
+from .permissions import RightForView
 
 
 # Create your views here.
@@ -45,25 +46,34 @@ class EmployeeCreate(CreateAPIView):
 
 
 #***********************   Project
-class ProjectsListAPIView(mixins.CreateModelMixin, ListAPIView):
+class Project_view(viewsets.ModelViewSet):
+    # permission_classes = (RightForView, )
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
-class ProjectDetailView(RetrieveAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    
 
-class ProjectCreate(CreateAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+		
+# class ProjectsListAPIView(mixins.CreateModelMixin, ListAPIView):
+#     permission_classes = (RightForView, )
+#     queryset = Project.objects.all()
+#     serializer_class = ProjectSerializer
 
-class ProjectDelete(DestroyAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+# class ProjectDetailView(RetrieveAPIView):
+#     queryset = Project.objects.all()
+#     serializer_class = ProjectSerializer
 
-class ProjectUpdate(UpdateAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+# class ProjectCreate(CreateAPIView):
+#     queryset = Project.objects.all()
+#     serializer_class = ProjectSerializer
+
+# class ProjectDelete(DestroyAPIView):
+#     queryset = Project.objects.all()
+#     serializer_class = ProjectSerializer
+
+# class ProjectUpdate(UpdateAPIView):
+#     queryset = Project.objects.all()
+#     serializer_class = ProjectSerializer
 
 
 #***********************   Task

@@ -15,34 +15,41 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.db import router
 from django.urls import path, include
+# from matplotlib.units import registry
 from project.views import DepartmentListAPIView, DepartmentDetailView, DepartmentCreate, DepartmentUpdate, DepartmentDelete
 from project.views import EmployeesListAPIView, EmployeeDetailView, EmployeeCreate
-from project.views import ProjectsListAPIView, ProjectDetailView, ProjectCreate, ProjectDelete, ProjectUpdate
+# from project.views import ProjectsListAPIView, ProjectDetailView, ProjectCreate, ProjectDelete, ProjectUpdate
 from project.views import TasksListAPIView, TaskDetailView, TaskCreate, TaskDelete, TaskUpdate
+from project.views import Project_view
+from rest_framework import routers
 
+router = routers.SimpleRouter()
+router.register(r'project', Project_view)
 
 urlpatterns = [
     path ('departments/',               DepartmentListAPIView.as_view(), name = 'departments_path'),
     path ('department/<int:pk>',        DepartmentDetailView.as_view(),  name = 'department_detail_path'),
     path ('department_add/',            DepartmentCreate.as_view(),      name = 'departments_cheate_path'),
-    path ('department_del/<int:pk>',    DepartmentDelete.as_view(),      name = 'department_detail_path'),
+    path ('department_del/<int:pk>',    DepartmentDelete.as_view(),      name = 'department_delete_path'),
     path ('department_update/<int:pk>', DepartmentUpdate.as_view(),      name = 'department_update_path'),
 
     path ('employees/',                 EmployeesListAPIView.as_view(),  name = 'employees_path'),
     path ('employee/<int:pk>',          EmployeeDetailView.as_view(),    name = 'employee_detail_path'),
     path ('employee_add/',              EmployeeCreate.as_view(),        name = 'employee_cheate_path'),
 
-    path ('projects/',                  ProjectsListAPIView.as_view(),   name = 'departments_path'),
-    path ('project/<int:pk>',           ProjectDetailView.as_view(),     name = 'department_detail_path'),
-    path ('project_add/',               ProjectCreate.as_view(),         name = 'departments_cheate_path'),
-    path ('project_del/<int:pk>',       ProjectDelete.as_view(),         name = 'department_detail_path'),
-    path ('project_update/<int:pk>',    ProjectUpdate.as_view(),         name = 'department_update_path'),
+    path ('', include(router.urls)),
+    # path ('projects/',                  ProjectsListAPIView.as_view(),   name = 'projects_path'),
+    # path ('project/<int:pk>',           ProjectDetailView.as_view(),     name = 'project_detail_path'),
+    # path ('project_add/',               ProjectCreate.as_view(),         name = 'projects_cheate_path'),
+    # path ('project_del/<int:pk>',       ProjectDelete.as_view(),         name = 'project_delete_path'),
+    # path ('project_update/<int:pk>',    ProjectUpdate.as_view(),         name = 'project_update_path'),
 
     path ('tasks/',                     TasksListAPIView.as_view(),      name = 'taskts_path'),
     path ('task/<int:pk>',              TaskDetailView.as_view(),        name = 'task_detail_path'),
     path ('task_add/',                  TaskCreate.as_view(),            name = 'tasks_cheate_path'),
-    path ('task_del/<int:pk>',          TaskDelete.as_view(),            name = 'task_detail_path'),
+    path ('task_del/<int:pk>',          TaskDelete.as_view(),            name = 'task_delete_path'),
     path ('task_update/<int:pk>',       TaskUpdate.as_view(),            name = 'task_update_path'),
 
 ]
