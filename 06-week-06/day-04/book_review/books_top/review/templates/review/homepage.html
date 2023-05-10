@@ -1,0 +1,28 @@
+ {% extends 'review/navbar.html' %}
+ 
+ {% block content%}
+<div class="container">
+	<h1>{{title}}</h1>
+	<div class="row">
+		{% for p in object_list %}
+		<div class="col-3 mb-2">
+			<div class="card" style="width: 100%;">
+				<img src="{{p.thumbnail_url}}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">{{p.title}}</h5>
+					<p class="card-text">{{p.description}}</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+	
+		{% endfor %}
+	</div>
+</div>
+
+
+</div>
+
+ {% endblock%}
+
+
