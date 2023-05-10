@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView, ListAPIView, RetrieveAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView
 from rest_framework import mixins, viewsets
-from .permissions import RightForView
+from .permissions import RightForView, NoRecordNToo
 
 
 # Create your views here.
@@ -48,7 +48,9 @@ class EmployeeCreate(CreateAPIView):
 #***********************   Project
 class Project_view(viewsets.ModelViewSet):
     # permission_classes = (RightForView, )
+    # print("request", request)
     queryset = Project.objects.all()
+    # permission_classes = [ NoRecordNToo, RightForView, ]
     serializer_class = ProjectSerializer
 
     

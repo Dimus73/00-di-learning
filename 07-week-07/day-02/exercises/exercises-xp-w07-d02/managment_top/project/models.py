@@ -11,7 +11,7 @@ class Employee (models.Model):
     email           = models.EmailField(null=True, blank=True)
     phone_number    = models.CharField(max_length=15, null=True, blank=True)
     department      = models.ForeignKey(Department, on_delete=models.CASCADE)
-    user						= models.ManyToManyField(User, related_name='reg_user' )
+    user			= models.OneToOneField(User, on_delete=models.CASCADE, related_name='reg_user' )
     
 class Task (models.Model):
     name            = models.CharField(max_length=50, db_index=True)
@@ -21,7 +21,7 @@ class Task (models.Model):
     project         = models.ForeignKey('Project', on_delete=models.CASCADE)
     
 class Project (models.Model):
-    name = models.CharField(max_length=50, db_index=True)
+    name            = models.CharField(max_length=50, db_index=True)
     description     = models.TextField(null=True, blank=True)
     start_date      = models.DateField(null=True, blank=True)
     end_date        = models.DateField(null=True, blank=True)
