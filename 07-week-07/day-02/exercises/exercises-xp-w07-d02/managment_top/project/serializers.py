@@ -7,9 +7,11 @@ class DepartmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = Employee
-        fields = '__all__'
+        exclude = ['user']
+        # fields = '__all__'
         extra_kwargs = {
             'url':{'view_name':'employee_detail_path'},
             'department':{'view_name':'department_detail_path'},
