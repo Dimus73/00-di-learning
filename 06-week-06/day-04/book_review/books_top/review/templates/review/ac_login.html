@@ -1,0 +1,14 @@
+ {% extends 'review/navbar.html' %}
+ 
+ {% block content%}
+<div class="container">
+	<h1>{{title}}</h1>
+	<div class="row">
+    <form action="" method="post">
+      {% csrf_token %}
+      {{form}}
+      <button type="submit"> Login</button>
+    </form>
+  </div>
+</div>
+ {% endblock%}
