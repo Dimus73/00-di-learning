@@ -11,6 +11,9 @@ class Book (models.Model):
     categories      = models.CharField(null=True, blank=True)
     thumbnail_url   = models.URLField(null=True, blank=True)
     avr_rating      = models.FloatField(default=0)
+    cnt_rating      = models.IntegerField(default=0)
+    class Meta:
+        ordering = ['title']
     
 class BookReview (models.Model):
     book            = models.ForeignKey (Book, on_delete= models.CASCADE )

@@ -37,13 +37,19 @@ def searche_books(request):
         print(search_book)
         search_author = request.POST.get('author_name', False)
         print(search_author)
-        book_list = Book.objects.all()
+        book_list = Book.objects.annotate(
+            avrg_raiting = Avg('bookreview__rating'),
+            count_raiting= Count('bookreview__rating')            
+				).order_by('title')
         book_list = book_list.filter(
             author__icontains=search_author) if search_author else book_list
         book_list = book_list.filter(
             title__icontains=search_book) if search_book else book_list
     else:
-        book_list = Book.objects.all()
+        book_list = Book.objects.annotate(
+            avrg_raiting = Avg('bookreview__rating'),
+            count_raiting= Count('bookreview__rating')            
+				).order_by('title')
     title = "Library"
     context = {'menu': menu, 'title': title, 'book_list': book_list}
     return render(request, 'review/homepage.html', context)
