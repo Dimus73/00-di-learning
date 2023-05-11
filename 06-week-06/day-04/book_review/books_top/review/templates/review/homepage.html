@@ -19,14 +19,15 @@
 	</div>
 	<div class="row">
 		{% for p in book_list %}
-		<div class="col-2 mb-2">
+		<div class="col-3 mb-2">
 			<div class="card" style="width: 100%;">
 				<img src="{{p.thumbnail_url}}" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h5 class="card-title">{{p.title}}</h5>
 					<p class="card-text"><u>{{p.author}}</u></p>
 					<p class="card-text">{{p.description}}</p>
-					<a href="#" class="btn btn-primary">See detail</a>
+					<a href="{% url 'comments_path' p.pk %}" class="btn btn-primary">See detail</a>
+					<a href="{% url 'add_comments_path' p.pk %}" class="btn btn-primary">Add comment</a>
 				</div>
 			</div>
 		</div>

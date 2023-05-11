@@ -55,17 +55,14 @@
 		</div>
 	</div>
 	<div class="row">
-		{% for p in object_list %}
-			<div class="card col-3 m-3">
-				<div class="card-body">
-					<h5 class="card-title">{{p.user}}</h5>
-					<h6 class="card-title">Raiting:{{p.rating}}</h6>
-					<p class="card-text">{{p.text}}</p>
-					<a href="#" class="card-link">Card link</a>
-					<a href="#" class="card-link">Another link</a>
-				</div>
+		<form action="" method="post">
+			<div class="col-3"></div>
+			<div class="col-6">
+				{% csrf_token %}
+				{{form}}
 			</div>
-		{% endfor %}
+			<button type="submit" class="btn btn-primary col-3">Add comment</button>
+		</form>
 	</div>
 </div>
 

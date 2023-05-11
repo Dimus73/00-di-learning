@@ -1,12 +1,14 @@
 from typing import Any, Dict
-
+from django.db.models import Avg, Count
 from django.db.models.query import QuerySet
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 # from pygments.token import Comment
 from .models import *
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView, CreateView
 from utils import *
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, AddCommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
@@ -60,10 +62,40 @@ class ViewComments(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Register user")
+        pk = self.kwargs.get('pk')
+        book = Book.objects.filter(pk=pk).annotate(
+            avrg_raiting = Avg('bookreview__rating'),
+            count_raiting= Count('bookreview__rating')
+        )
+        c_def = self.get_user_context(title="Book comments", book=book[0])
         context = dict(list(context.items()) + list(c_def.items()))
         return context
 
+class AddComments(DataMixin, CreateView):
+    model = BookReview
+    form_class = AddCommentForm
+    template_name = 'review/add_comment.html'
+    success_url = reverse_lazy ('homepage_path')
+    
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+         pk = self.kwargs.get('pk')
+         b = Book.objects.get(pk=pk)
+         new_comment = form.save(commit=False)
+         new_comment.book = b
+         new_comment.user=self.request.user
+         new_comment.save()
+         return super().form_valid(form)
+
+    def get_context_data(self, *, object_list=None, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs.get('pk')
+        book = Book.objects.filter(pk=pk).annotate(
+            avrg_raiting = Avg('bookreview__rating'),
+            count_raiting= Count('bookreview__rating')
+        )
+        c_def = self.get_user_context(title="Register user", book=book[0])
+        context = dict(list(context.items()) + list(c_def.items()))
+        return context
 
 
 # ************** USER
@@ -75,7 +107,7 @@ class RegisterUser (DataMixin, CreateView):
 
     def get_context_data(self, *, object_list=None, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Register user")
+        c_def = self.get_user_context(title="Book Details")
         context = dict(list(context.items()) + list(c_def.items()))
         return context
 
