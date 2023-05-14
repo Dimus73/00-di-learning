@@ -1,0 +1,57 @@
+{% extends 'partials/navbar.html' %}
+
+{% block content_top%}
+<div class="container">
+  <h1>{{title}}</h1>
+{% endblock%}
+
+
+{% block content%}
+<div class="container">
+   <h1>{{title}}</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Room</th>
+        <th scope="col">People</th>
+        <th scope="col">Price</th>
+        <th scope="col">Date beginning</th>
+        <th scope="col">Date end</th>
+        <th scope="col">Client name</th>
+        <th scope="col">Client mail</th>
+        <th scope="col">Paid</th>
+        <th scope="col">Cancel</th>
+
+      </tr>
+    </thead>
+    <tbody>
+   {% for i in bookings %}
+        <tr>
+            <td>{{i.room.type }} </td>
+            <td>{{i.room.adults }} </td>
+            <td>{{i.room.price}} </td>
+            <td>{{i.date_beginning}}</td>
+            <td>{{i.date_end}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.paid}}</td>
+            <td><form action="#" method="post">
+                {% csrf_token %}
+             {% if i.canceled == False %}
+             
+                <button type="submit" class="btn btn-warning" value="{{i.pk}}" name="cancel">Cancel booking</button></td>
+                {% else %}
+                <button type="submit" class="btn btn-secondary" value="{{i.pk}}" name="cancel">Canceled</button></td>
+                {%endif%}>
+            </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+{% endblock%}  
+
+{% block content_bottom%}
+</div>
+</div>
+ {% endblock%}
