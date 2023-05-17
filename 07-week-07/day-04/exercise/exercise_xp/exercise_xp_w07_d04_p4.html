@@ -1,0 +1,73 @@
+//************* Exercise 4 : My Book List: **************
+
+<body>
+
+<img src="" width="" alt="">
+	
+<script>
+
+let hp = {
+	title:"Haryr Potter",
+	author: "J.K.Rowling",
+	image : "https://i.pinimg.com/736x/ea/45/96/ea4596cafdc5acaeac923b0cea57d242.jpg",
+	alreadyRead:false
+}
+
+let wp = {
+	title:"war and peace",
+	author: "Lev Tolstoy",
+	image : "https://mbcinema.com/wp-content/uploads/2019/12/250-Sergey-Bondarchuk-Voyna-i-mir-War-and-Peace-1966.-USsp-771x1024.jpg",
+	alreadyRead:true
+}
+
+book_list = [hp, wp]
+
+let body = document.body
+let section = document.createElement('section')
+body.appendChild(section)
+
+for (b of book_list){
+	let div = document.createElement('div');
+	for (t in b){
+		let div_book_key = document.createElement('div');
+		div_book_key.textContent = t;
+		let div_book_value;
+		if (t != 'image'){
+			div_book_value = document.createElement('div')
+			div_book_value.textContent = b[t]
+			if (b['alreadyRead']){
+				div_book_value.setAttribute ('style', 'color:red;')
+			}
+		} else {
+			div_book_value = document.createElement('img')
+			div_book_value.setAttribute ('src', b[t])
+			div_book_value.setAttribute ('style', 'width:100px;')
+		}
+		div.appendChild(div_book_key)
+		div.appendChild(div_book_value)
+	}
+	section.appendChild(div)
+}
+
+// div = document.getElementsByTagName('div')
+// console.log(div[0])
+// div[0].classList=['socialNetworkNavigation']
+// let li = document.createElement("li") 
+// let a = document.createElement('a')
+// a.innerText = 'Logout'
+// a.setAttribute('href','#')
+// li.appendChild(a)
+
+// ul = div[0].getElementsByTagName('ul')
+// ul[0].appendChild(li)
+
+// let li01 = ul[0].firstElementChild
+// let li02 = ul[0].lastElementChild
+
+// console.log(li01.innerText, li02.innerText)
+</script>
+</body>
+</html>
+
+
+
