@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- <script src="js/home.js"></script> -->
+</head>
+<body>
+	Hello
+<script>
+
+let person1={
+	FullName : 'Semion Semionov',
+	Mass     : 75,
+	Height   : 183,
+	fBMI     : function(){
+		return (this.Mass*this.Mass/this.Height)
+	}
+}
+
+let person2={
+	'FullName' : 'Petr Petrov',
+	'Mass'     : 96,
+	'Height'   : 179,
+	fBMI     : function(){
+		return (this.Mass*this.Mass/this.Height);
+	}
+}
+
+const s = function (a,b){
+	console.log(a.fBMI(), b.fBMI());
+	if (a.fBMI()>b.fBMI()){
+		console.log(a.FullName)
+	} else {
+		console.log(b.FullName)
+	}
+}
+
+s(person1, person2);
+</script>
+</body>
+</html>
+
+
+
