@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- <script src="js/home.js"></script> -->
+</head>
+<body>
+	<div id="container">Users:</div>
+	<ul class="list">
+			<li >John</li>
+			<li style="">Pete</li>
+	</ul>
+	<ul class="list">
+			<li>David</li>
+			<li>Sarah</li>
+			<li>Dan</li>
+	</ul>
+	
+	
+<script>
+	//************* Exercise 5 : Users **************
+	//02_01
+	let div = document.getElementsByTagName('div');
+	let ul = document.getElementsByTagName('ul');
+	console.log(ul)
+
+	//02_02
+	for (u of ul){
+		console.log("<ul>>", u)
+		 li=u.getElementsByTagName('li')
+		 for (l of li){
+			if (l.innerText == "Pete") {
+				l.innerText = "Richard"
+			}
+			console.log("<li text >>", l.innerText)
+		 }
+	}
+
+	//02_03
+	for (u of ul){
+		console.log("<ul>>", u)
+		 li=u.getElementsByTagName('li')
+		 for (l of li){
+			if (l.innerText == "Sarah") {
+				l.remove();
+			}
+			console.log("<li text >>", l.innerText)
+		 }
+	}
+
+	//02_04
+	for (u of ul){
+		console.log("<ul>>", u)
+		 li=u.firstElementChild
+		 li.innerText = '****' + li.innerText
+		 console.log("<li>>", li)
+	}
+
+	//03_01
+		for (u of ul){
+			u.classList.add("student_list");
+	}
+
+	//03_02
+	ul[0].classList.add("university", "attendance")
+
+	//04_01
+	console.log(div[0])
+	div[0].setAttribute("style", "background-color:lightblue; font-size: 16px; padding:20px;");
+	console.log(div[0])
+
+	//04_02
+	for (u of ul){
+		console.log("<ul>>", u)
+		 li=u.getElementsByTagName('li')
+		 for (l of li){
+			if (l.innerText == "****John") {
+				l.setAttribute("style", "display:none");
+			}
+			console.log("<li text >>", l.innerText)
+		 }
+	}
+
+	//04_03
+	for (u of ul){
+		console.log("<ul>>", u)
+		 li=u.getElementsByTagName('li')
+		 for (l of li){
+			if (l.innerText == "Richard") {
+				l.setAttribute("style", "border: 2px; border-style: solid;");
+			}
+			console.log("<li text >>", l.innerText)
+		 }
+	}
+
+	//04_04
+	document.body.setAttribute("style", "font-size:25px")
+
+	//04_05 (Bonus)
+	let user_list=[]
+	if (div[0].style.backgroundColor == 'lightblue'){
+		for (u of ul){
+			console.log("<ul>>", u)
+			li=u.getElementsByTagName('li')
+			for (l of li){
+				user_list.push(l.innerText)
+			}
+		}
+		alert (`Hello ${user_list.join(' and ')}`)
+	}
+
+
+	// console.log (div[0]);
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- <script src="js/home.js"></script> -->
+</head>
+<body>
+	Hello
+<script>
+	//************* Exercise 1 : Find The Numbers Divisible By 23 **************
+function is_div (nnn){
+	let n_set=[];
+	for (i=nnn; i<=500; i++){
+		if (i % nnn === 0){
+			n_set.push(i);
+		}
+	}
+	return n_set
+}
+do{
+	nnn = Number(prompt("Enter the number les then 500"))
+	console.log (nnn)
+} while (isNaN(nnn) || nnn > 500);
+
+let n_set = is_div(nnn)
+console.log(n_set)
+
+let summ=0
+for (p of n_set){
+	summ+=p
+}
+console.log("Suum:", summ)
+
+	//************* Exercise 2 : Shopping List **************
+const stock = { 
+    "banana": 6, 
+    "apple": 0,
+    "pear": 12,
+    "orange": 32,
+    "blueberry":1
+}  
+
+const prices = {    
+    "banana": 4, 
+    "apple": 2, 
+    "pear": 1,
+    "orange": 1.5,
+    "blueberry":10
+} 
+
+shoppingList = ['banana', 'pear', 'kiwi', 'apple']
+
+function myBill(){
+	let summ_bill=0;
+	for (p of shoppingList){
+		if (p in stock  && stock[p]>0){
+			summ_bill += prices[p];
+			stock[p]--;
+		}
+	}
+	return summ_bill
+}
+
+console.log(myBill(),stock)
+
+//************* Exercise 3 : What’s In My Wallet ? **************
+
+function changeEnough(price, list_c){
+	return (list_c[0]*0.25+list_c[1]*0.1+list_c[2]*0.05+list_c[3]*0.01)>price;
+}
+console.log(changeEnough(14.11, [2,100,0,0]))
+console.log(changeEnough(0.75, [0,0,20,5]))
+
+//************* Exercise 4 : Vacations Costs **************
+const hotelCost = (days) => days*140
+
+function planeRideCost (location){
+	switch (location) {
+		case 'London':
+			return 183;
+		case 'Paris':
+			return 220;
+		default:
+			return 300
+	}
+}
+
+const rentalCarCost = (days) => days > 10 ? days*40*0.95 : days*40
+
+function inputData(promt_text, inNamb){
+	do{
+		ans = prompt(promt_text)
+	} while ((inNamb && isNaN(ans)) || (!inNamb && !isNaN(ans)) )
+	return ans
+
+}
+
+function totalVacationCost() {
+	let summ = 0;
+	n = inputData ("Enter number of nights", true);
+	summ += hotelCost(n)
+
+	n = inputData ("Enter your location", false);
+	summ += planeRideCost (n)
+
+	n = inputData ("Enter number of days", true);
+	summ += rentalCarCost (n)
+
+	return summ
+}
+
+console.log("Total vacation cost:", totalVacationCost())
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
