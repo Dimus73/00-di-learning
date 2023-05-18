@@ -33,71 +33,9 @@
 			transform: translate(0%, 100%);
 		}
 	</style>
-	<script src="planets.js"></script>	
+	<script src="words_in_star.js"></script>	
 	<script>
 
-		let body = document.body
-		body.setAttribute ('style','background-color:black;')
-
-		let section = document.createElement('section')
-		section.classList.add('section')
-		body.appendChild(section)
-
-		for (i=0;i<8;i++){
-			let div_orbit = document.createElement('div');
-			div_orbit.classList.add('orbit');
-			section.appendChild(div_orbit);
-			let w = (15+i*10)*planets[i].orb_k;
-			let h = w;
-			let w_p = (100-w)/2
-			let h_p = 
-			div_orbit.setAttribute ('style',`width: ${w}vw;\
-			                                 height: calc(${w}vw);\
-																			 left:${w_p}vw;\
-																			 top:calc((100vh - ${w}vw)/4)`)
-			let div_pl = document.createElement('div')
-			div_pl.classList.add('planet');
-			div_pl.setAttribute ('style',`width: ${base_planet*planets[i].diam}px;\
-																		height: ${base_planet*planets[i].diam}px;\
-																		left:50%; right:50%;\
-																		bottom:${-base_planet*planets[i].diam/2}px;\
-																		background-color: rgb(${planets[i].color.r}, \
-																													${planets[i].color.g}, \
-																													${planets[i].color.b});`)
-			div_orbit.appendChild(div_pl);
-
-			let p = document.createElement('p')
-			p.classList.add('name');
-			p.textContent = planets[i].name;
-			// p.setAttribute ('style',`left:100%; bottom:0; `);
-			div_pl.appendChild(p);
-			
-
-		}
-
-		// for (b of book_list){
-		// 	let div = document.createElement('div');
-		// 	for (t in b){
-		// 		let div_book_key = document.createElement('div');
-		// 		div_book_key.textContent = t;
-		// 		let div_book_value;
-		// 		if (t != 'image'){
-		// 			div_book_value = document.createElement('div')
-		// 			div_book_value.textContent = b[t]
-		// 			if (b['alreadyRead']){
-		// 				div_book_value.setAttribute ('style', 'color:red;')
-		// 			}
-		// 		} else {
-		// 			div_book_value = document.createElement('img')
-		// 			div_book_value.setAttribute ('src', b[t])
-		// 			div_book_value.setAttribute ('style', 'width:100px;')
-		// 		}
-		// 		div.appendChild(div_book_key)
-		// 		div.appendChild(div_book_value)
-		// 	}
-		// 	section.appendChild(div)
-		// }
-		
 		</script>
 		
 </head>
