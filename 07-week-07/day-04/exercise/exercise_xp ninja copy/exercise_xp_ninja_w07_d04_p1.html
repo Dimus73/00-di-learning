@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- <script src="js/home.js"></script> -->
+	<style>
+		a{
+			background-color: lightgray;
+			width:0;
+			height: ;
+		}
+	</style>
+</head>
+<body>
+	Hello
+<script>
+//************* Exercise 1: Random Number  **************
+function rndInRange(a,b){
+	let r_numb = Math.random();
+	r_numb = a<b ? r_numb*(b-a) : r_numb*(a-b);
+	r_numb = Math.floor(r_numb);
+	return a<b ? r_numb + a : r_numb + b
+}
+let r_numb = rndInRange(1,100);
+for (let i = 1 ; i <= r_numb ; i++){
+	if (i%2 === 0){
+		console.log (i);
+	}
+}
+
+//************* Exercise 2: Capitalized Letters  **************
+function convert(str){
+	let result=[[],[]];
+	for (let i = 0; i < str.length; i++){
+		result[0][i] = (i%2 === 1) ? str[i].toUpperCase() : str[i];
+		result[1][i] = (i%2 === 0) ? str[i].toUpperCase() : str[i];
+	}
+	return [result[0].join(''), result[1].join('')]
+}
+console.log(convert('abcdef'));
+
+//************* Exercise 3 : Is Palindrome?  **************
+const is_palindrome = (str) => (str === str.split("").reverse().join(''));
+
+if (is_palindrome('madamf')){
+	console.log('The entry is palendrom');
+} else {
+	console.log('The entry is NOT a palindrome');
+}
+
+
+//************* Exercise 4 : Biggest Number  **************
+function biggestNumberInArray(arrayNumber){
+	let bigestNumber = 0
+	for (n of arrayNumber){
+		if (!n.isNaN && n > bigestNumber){
+			bigestNumber = n
+		}
+	}
+	return bigestNumber
+}
+console.log(biggestNumberInArray([])); 
+
+//************* Exercise 5: Unique Elements  **************
+function uniqueElements (array){
+	let new_array=[];
+	for (n of array){
+		if (!new_array.includes(n)){
+			new_array.push(n);
+		}
+	}
+	return new_array;
+}
+console.log(uniqueElements([1,2,3,3,3,3,4,5])); 
+
+//************* Exercise 6 : Calendar  **************
+Date.prototype.daysInMonth = function() {
+	return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();
+	};
+
+function createCalendar(year, month){
+	let body = document.body;
+	let weekDays = ['MO',	'TU', 'WE',	'TH',	'FR',	'SA',	'SU']
+	let table = document.createElement('table');
+	table.style = "border-collapse: collapse;"
+	body.appendChild(table);
+
+	let row = document.createElement('tr');
+	table.appendChild (row);
+	let td
+	for (d of weekDays){
+		td = document.createElement('th');
+		td.textContent = d;
+		td.style = "width:100px; height:50px; border:1px solid black;";
+		td.align = "center"
+
+		row.appendChild(td);
+	}
+
+	firstDayOfMonth = new Date(year, month-1, 1);
+	// lastDayOfMonth = new Date(year, month-1, 0);
+	console.log(firstDayOfMonth);
+	
+	weekDayOfFirstDay = firstDayWeekDay(firstDayOfMonth);
+	daysInMonth = firstDayOfMonth.daysInMonth();
+	console.log(weekDayOfFirstDay,daysInMonth);
+
+	let days_count = 1
+	for (i = 1; (i <= (daysInMonth + weekDayOfFirstDay) && (days_count < daysInMonth) ); i+=7){
+		row = document.createElement('tr');
+		if (i % 2 !=0 ){
+			row.style = "background-color: lightgray"
+		}
+	  table.appendChild (row);
+		for (n = 1 ; n <= 7; n++){
+			td = document.createElement('td');
+			td.style = "width:100px; height:50px; border:1px solid black;";
+			td.align = "center"
+			row.appendChild(td);
+			if ((i === 1 && n < weekDayOfFirstDay) || (days_count > daysInMonth)){
+				td.textContent = '--'
+			}
+			else{
+				td.textContent = days_count;
+				days_count++;
+			}
+		}
+	}
+
+}
+
+function firstDayWeekDay (date){
+	n = date.getDay();
+	// console.log("День недели:", n);
+	// n = (n === 1) ? 7 : n-1;
+	return n
+}
+createCalendar(2023, 3)
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
