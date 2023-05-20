@@ -49,7 +49,7 @@ function calculate(){
 		case '-':
 			res = parseFloat(entr_n1) - parseFloat(entr_n2);
 			break;
-		case '*':
+		case 'x':
 			res = parseFloat(entr_n1) * parseFloat(entr_n2);
 			break;
 		case '/':

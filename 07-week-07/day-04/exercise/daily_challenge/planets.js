@@ -7,7 +7,8 @@ let pl1 = {
 		g:128,
 		b:128
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 5
 }
 let pl2 = {
 	name:'Venus',
@@ -18,7 +19,8 @@ let pl2 = {
 		g:204,
 		b:0
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 7
 }
 let pl3 = {
 	name:'Earth',
@@ -29,7 +31,8 @@ let pl3 = {
 		g:128,
 		b:0
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 10
 }
 let pl4 = {
 	name:'Mars',
@@ -40,7 +43,8 @@ let pl4 = {
 		g:0,
 		b:0
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 15
 }
 let pl5 = {
 	name:'Jupiter',
@@ -51,7 +55,8 @@ let pl5 = {
 		g:166,
 		b:0
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 23
 }
 let pl6 = {
 	name:'Saturn',
@@ -62,7 +67,8 @@ let pl6 = {
 		g:255,
 		b:0
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 33
 }
 let pl7 = {
 	name:'Uranus',
@@ -73,7 +79,8 @@ let pl7 = {
 		g:255,
 		b:255
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 43
 }
 let pl8 = {
 	name:'Neptune',
@@ -84,7 +91,8 @@ let pl8 = {
 		g:0,
 		b:255
 	},
-	sputnik : {}
+	sputnik : {},
+	rotationSpeed : 53
 }
 
 let planets = [pl1, pl2, pl3, pl4, pl5, pl6, pl7, pl8];
@@ -98,8 +106,11 @@ section.classList.add('section')
 body.appendChild(section)
 
 for (i=0;i<8;i++){
+	let div_orbit_show = document.createElement('div');
 	let div_orbit = document.createElement('div');
 	div_orbit.classList.add('orbit');
+	div_orbit_show.classList.add('orbit_show');
+	section.appendChild(div_orbit_show);
 	section.appendChild(div_orbit);
 	let w = (15+i*10)*planets[i].orb_k;
 	let h = w;
@@ -108,7 +119,16 @@ for (i=0;i<8;i++){
 	div_orbit.setAttribute ('style',`width: ${w}vw;\
 																		height: calc(${w}vw);\
 																		left:${w_p}vw;\
-																		top:calc((100vh - ${w}vw)/4)`)
+																		top:calc((100vh - ${w}vw)/4);\
+																		animation: circle ${planets[i].rotationSpeed}s linear infinite;\
+																		z-index:1;`)
+
+	div_orbit_show.setAttribute ('style',`width: ${w}vw;\
+																		height: calc(${w}vw);\
+																		left:${w_p}vw;\
+																		top:calc((100vh - ${w}vw)/4);\
+																		z-index:0;`)
+																		
 	let div_pl = document.createElement('div')
 	div_pl.classList.add('planet');
 	div_pl.setAttribute ('style',`width: ${base_planet*planets[i].diam}px;\
@@ -117,7 +137,9 @@ for (i=0;i<8;i++){
 																bottom:${-base_planet*planets[i].diam/2}px;\
 																background-color: rgb(${planets[i].color.r}, \
 																											${planets[i].color.g}, \
-																											${planets[i].color.b});`)
+																											${planets[i].color.b});\
+																animation: inner-circle ${planets[i].rotationSpeed}s linear infinite;\
+																z-index:5`)
 	div_orbit.appendChild(div_pl);
 
 	let p = document.createElement('p')
