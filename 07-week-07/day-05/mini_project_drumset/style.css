@@ -1,0 +1,58 @@
+*{
+	font-family: 'PT Sans', sans-serif;
+}
+
+body{
+	padding: 50px
+}
+
+button {
+	width:70px;
+	height:70px;
+	margin: 1px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	background-color: rgba(83, 55, 83, 0.352);
+	font-size: 35px;
+}
+
+button:hover{
+	transform: scale(1.2)
+}
+
+.activ{
+	transform: scale(1.5)!important;
+	background-color: yellow;
+}
+#display {
+		width: 375px;
+		height: 70px;
+		border: 2px solid black;
+		margin-bottom: 5px;
+		background-color: beige;
+		font-size: 55px;
+		text-align: end;
+}
+.backside {
+		padding: 25px;
+		padding-left: 35px;
+		height: 385px;
+		width: 385px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 5.5);
+		background-color: rgba(69, 69, 58, 0.749);
+		border: 2px solid rgb(23, 17, 23);
+}
+.operator {
+	background-color: rgba(113, 48, 22, 0.591);
+}
+.clear {
+	width:147px;
+	height:70px;
+	margin: 1px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	background-color: rgba(83, 55, 83, 0.352);
+	font-size: 35px;
+} 
+
+.big{
+	width: 145px;
+}
