@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<form onSubmit="handleSubmit(event)" name=form_one>
+		username:<input type="text" name="username" value="">
+		password:<input type="password" name="pw" value="">
+		<input type="submit" name="" value="Send">
+	</form>
+
+	<script>
+		let form = document.getElementById('form_one');
+		let form_el = form.elements;
+		form.addEventListener ('submit', func_s);
+
+		function func_s(e){
+			e.preventDefault()
+			if (form_el.username.value in null){
+				console.log('User name empli');
+			}
+			if (form_el.username.value in null){
+				console.log('User name empli');
+			}
+		}
+	</script>
+</body>
+</html>
