@@ -7,12 +7,15 @@ let i=0;
 function hW(){
 	alert("Hello World")
 }
-setTimeout(hW,2000)
+setTimeout(hW,2000);
 function addP(){
-	p=document.createElement('p')
-	p.textContent = "Hello World"
-	div.appendChild(p)
+	p=document.createElement('p');
+	p.textContent = "Hello World";
+	div.appendChild(p);
 	i++;
+	if(i > 6){
+		clearInterval(id);
+	}
 }
 
 //02
