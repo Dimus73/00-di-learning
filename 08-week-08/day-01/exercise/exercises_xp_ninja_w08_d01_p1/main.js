@@ -19,7 +19,8 @@ function calculateTip(e){
 		numberOfPeople = 1;
 		each.style.display = 'none';
 	} else {
-		each.style.display = 'undefined'
+		console.log('Go NO each');
+		each.style.display = null;
 	}
 	let total = billAmount*(1+serviceQuality)/numberOfPeople;
 	total = total.toFixed(2);
