@@ -34,11 +34,11 @@ const data = [
 let loop_sum=0;
 let reduce_sum=0;
 for (d of data){
-  loop_sum+=d.age*7
+  loop_sum+=(d.type === 'dog') ? d.age*7:d.age
 }
 
 reduce_sum = data.reduce((s,item)=>{
-  return s+=item.age*7;
+  return s+=(item.type === 'dog') ? item.age*7 : item.age;
 },0);
 
 console.log('loop:',loop_sum,'reduce_sum:',reduce_sum);
