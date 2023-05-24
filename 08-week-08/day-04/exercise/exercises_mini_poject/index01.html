@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+
+		#feald {
+			display: inline-flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			align-items: center;
+			position: relative;
+			width: 90%;
+			height: 90vh;
+			left: 5%;
+			top: 5%;
+			background-color: gray;
+		}
+
+		#left {
+			display: inline-flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			width: 20%;
+			height: 95%;
+			border: 1px solid black;
+		}
+
+		#right {
+			display: inline-flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			width: 77%;
+			height: 95%;
+			border: 1px solid black;
+		}
+
+		#button{
+			display: inline-flex;
+			width: 90%;
+			height: 12%;
+		}
+		.color_select{
+			width: 30%;
+			height: 12%;
+			background-color: #8a2be2;
+		}
+		.pixel{
+			box-sizing: border-box;
+			width: 1.2%;
+			height: 1.2%;
+			border: 1px solid gray;
+			background-color: white;
+		}
+	</style>
+</head>
+<body>
+	<div id="feald">
+		<div id="left">
+			<button id="button">Clear</button>
+			<div class="color_select" id="color_select" clr="#8a2be2"></div>
+		</div>
+		
+		<div id="right">
+			<div class="pixel" id="main_pixel"></divclas>
+		</div>
+	</div>
+
+<script src="script01.js"></script>
+</body>
+</html>
