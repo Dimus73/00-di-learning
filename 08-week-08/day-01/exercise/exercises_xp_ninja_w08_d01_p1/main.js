@@ -28,3 +28,47 @@ function calculateTip(e){
 	TipTag.textContent = total;
 
 }
+
+let body=document.body;
+
+
+let email = document.createElement('input');
+email.setAttribute ('type','text');
+email.setAttribute ('partern','[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$');
+let ebutton = document.createElement('button')
+ebutton.textContent = 'Test e-mail';
+ebutton.addEventListener ('click', testEmail);
+
+body.appendChild(email);
+body.appendChild(ebutton);
+
+function testEmail(){
+	let em = email.value;
+	let part = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+	let test = part.test(em);
+	console.log(`E-Mail is ${test}`);
+}
+
+let br = document.createElement('br');
+let button = document.createElement('button');
+button.textContent = 'Get Geo Position'
+button.addEventListener('click',geoPosition);
+body.appendChild(br);
+body.appendChild(button);
+
+
+let x = document.createElement('p');
+body.appendChild(x)
+
+function geoPosition(e){
+	console.log('Look for geo');
+	navigator.geolocation.getCurrentPosition(showPosition);
+
+}
+function showPosition(position){
+	console.log('Position:', position);
+	x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude; 
+
+}
+
