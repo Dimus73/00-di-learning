@@ -14,18 +14,57 @@ class Game{
                     ['','',''],
                     ['','','']
                   ];
-    this.playerChar = playerChar;
-    this.ComputerChar = (playerChar === 'X') ? 'O' : 'X';
-    // true - Player step; fals - Computer
-    // this.nextStep = (playerChar === 'X' ? true : false);
+    this.playerChar;
+    this.ComputerChar;
+    this.level;
+    this.startDialogXO();
     this.freeCels = [];
-    this.createField();
-    console.log('Play feald', this.playField);
-    this.setFreeCels();
-    if (playerChar === 'O'){
-      this.nextComputerStep();
+  }
+
+  startDialogXO(){
+    let buttonX = document.createElement('button');
+    buttonX.textContent = 'X';
+    buttonX.style.fontSize = '35px';
+    buttonX.addEventListener('click', choiceXO);
+    buttonX.name='X';
+    console.log(buttonX);
+
+    let buttonO = document.createElement('button');
+    buttonO.textContent = 'O';
+    buttonO.style.fontSize = '35px';
+    buttonO.addEventListener('click', choiceXO)
+    buttonO.name='O';
+
+    divInfo.textContent = "Choose which one to play with: ";
+    divInfo.appendChild(buttonX);
+    divInfo.appendChild(buttonO);
+    divInfo.style.display = 'block'
+  }
+
+  startDialogLevel(){
+    divInfo.textContent = "";
+    let divText = document.createElement('div');
+    divText.style.display = 'display-flex';
+    divText.textContent = "Choose difficulty level (1-10)";
+    divInfo.appendChild(divText);
+
+    let divLevels = document.createElement('div');
+    divLevels.style.display = 'display-flex';
+    divInfo.appendChild(divLevels);
+
+    for (let i=1; i<=10; i++){
+      let newButton = document.createElement('button');
+      newButton.style.fontSize = '35px';
+      newButton.style.width = `${15+2*i}px`;
+      newButton.style.height = `${15+2*i}px`;
+      newButton.style.borderRadius = '50%';
+      newButton.name = i;
+      newButton.addEventListener('click', choiceLevel);
+      console.log(newButton);
+      divLevels.appendChild(newButton);
     }
   }
+
   setFreeCels(){
     this.freeCels=[];
     for (let y = 0 ; y < 3; y++){
@@ -58,7 +97,12 @@ class Game{
 
   nextComputerStep(cel,char){
     if (this.activGame){
-      this.computerStepLevel0(cel,char);
+      let i = rndRange (0,10);
+      if (i <= this.level){
+        this.computerStepLevel0(cel,char);
+      } else {
+        this.computerStepLevel1(cel,char);
+      }
     }
   }
 
@@ -119,7 +163,6 @@ class Game{
       } else if (this.playField[2][2].char === char){
         nextStep = {x:0,y:0};
       } 
-      console.log('----- Центр-------', nextStep);
     } else if(cel.x === 0 && cel.y ===0){
       if (this.playField[1][1].char === char){
         nextStep = {x:2,y:2};
@@ -239,9 +282,10 @@ class Game{
   
 }
 
-
+// Start the game
 let game = new Game(playerChar);
 
+//Waiting for the player's next turn
 function onClickFunc(e){
   if (game.activGame){
     console.log(e, e.target);
@@ -249,6 +293,24 @@ function onClickFunc(e){
     let y = Number(e.target.attributes.yy.nodeValue);
     game.nextHumanStep({x, y}, game.playerChar)
   }
+}
+
+// Waiting for the choice of whose turn will be the first
+function choiceXO(e){
+  game.playerChar = e.target.name;
+  game.ComputerChar = (game.playerChar === 'X') ? 'O' : 'X';
+  game.startDialogLevel();
+}
+
+// We are waiting for the choice of difficulty level
+function choiceLevel(e){
+  game.level=Number(e.target.name);
+  game.createField();
+  game.setFreeCels();
+  if (game.playerChar === 'O'){
+    game.nextComputerStep({x:0,y:0},'X');
+  }
+
 }
 
 function rndRange(a,b){
