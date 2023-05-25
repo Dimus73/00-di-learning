@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		a{
+			background-color: ;
+		}
+
+		#back{
+			/* display: flex-box; */
+			display: inline-block;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			align-items: center;			
+			/* width: 50vw;
+			height: calc(50vw); */
+			background-color: lightblue;
+		}
+		table{
+			border-collapse:collapse;
+			margin: 40px;
+		}
+
+		.cel{
+			width: 10vw;
+			height: calc(10vw);
+			border: 1px solid black;
+			text-align: center;
+		}
+		.notshow{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="back">
+		<div class = "notshow" id="info"></div>
+		<div class = "notshow" id="nextgame">Press for new game</div>
+		<table id="table">
+			<tbody>
+				<!-- Cells are created in js -->
+			</tbody>
+		</table>
+	</div>
+
+<script src="script01.js"></script>
+</body>
+</html>
