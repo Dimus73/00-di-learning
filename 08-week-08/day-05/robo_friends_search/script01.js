@@ -2,6 +2,9 @@ const body = document.body;
 const head = document.head;
 let cardsList=[];
 
+//Add fon
+body.style.backgroundImage = 'url("circuit-pattern.png")';
+
 //Add font
 let link_font = document.createElement('link');
 link_font.href = "https://fonts.cdnfonts.com/css/sega-logo-font";
@@ -26,6 +29,9 @@ for (let robot of robots){
 
 function createTopBar(){
   let navBar = document.createElement('div');
+  navBar.style.position = 'fixed';
+  navBar.style.top = 0;
+  navBar.style.left = 0;
   navBar.style.backgroundColor = "rgb(106,223,130)";
   navBar.style.display = 'flex';
   navBar.style.flexWrap = 'wrap';
@@ -60,7 +66,8 @@ function createCardsConteyner(){
   cards.style.display = 'flex';
   cards.style.justifyContent = 'space-around'
   cards.style.flexWrap = 'wrap';
-  cards.style.margin ='50px auto';
+  cards.style.margin ='0px auto';
+  cards.style.marginTop = '100px';
 
   return cards;
 }
