@@ -21,10 +21,23 @@ class Game{
     this.freeCels = [];
   }
 
+  welcomeScreen(){
+
+  }
   startDialogXO(){
+    let question = document.createElement('div');
+    question.style.fontFamily = 'Pangolin';
+    question.style.fontSize = '30px';
+    question.style.color = 'white';
+    question.textContent = "Choose which one to play with:";
+
     let buttonX = document.createElement('button');
     buttonX.textContent = 'X';
     buttonX.style.fontSize = '35px';
+    buttonX.style.borderRadius = '40%';
+    buttonX.style.backgroundColor ='rgb(20, 52, 254)';
+    buttonX.style.color = 'white';
+    buttonX.style.margin = '0 20px';
     buttonX.addEventListener('click', choiceXO);
     buttonX.name='X';
     console.log(buttonX);
@@ -32,24 +45,37 @@ class Game{
     let buttonO = document.createElement('button');
     buttonO.textContent = 'O';
     buttonO.style.fontSize = '35px';
-    buttonO.addEventListener('click', choiceXO)
+    buttonO.style.borderRadius = '40%';
+    buttonO.style.backgroundColor ='rgb(20, 52, 254)';
+    buttonO.style.color = 'white';
+    buttonO.addEventListener('click', choiceXO);
     buttonO.name='O';
 
-    divInfo.textContent = "Choose which one to play with: ";
+    // ÷divInfo.textContent = "Choose which one to play with: ";
+    divInfo.appendChild(question);
     divInfo.appendChild(buttonX);
     divInfo.appendChild(buttonO);
-    divInfo.style.display = 'block'
+    divInfo.style.display = 'inline-flex';
+    divInfo.style.flexWrap = 'wrap';
+    divInfo.style.justifyContent = 'space-around';
+    divInfo.style.alignItems = 'center';
   }
 
   startDialogLevel(){
     divInfo.textContent = "";
     let divText = document.createElement('div');
     divText.style.display = 'display-flex';
+    divText.style.fontFamily = 'Pangolin';
+    divText.style.fontSize = '30px';
+    divText.style.color = 'white';
+    // divText.style.marginTop = '20px';
+    divText.style.marginRight = '20px';
     divText.textContent = "Choose difficulty level (1-10)";
     divInfo.appendChild(divText);
 
     let divLevels = document.createElement('div');
-    divLevels.style.display = 'display-flex';
+    divLevels.style.display = 'inline-flex';
+    divLevels.style.alignItems = 'center'
     divInfo.appendChild(divLevels);
 
     for (let i=1; i<=10; i++){
@@ -58,6 +84,7 @@ class Game{
       newButton.style.width = `${15+2*i}px`;
       newButton.style.height = `${15+2*i}px`;
       newButton.style.borderRadius = '50%';
+      newButton.style.backgroundColor ='rgb(20, 52, 254)';
       newButton.name = i;
       newButton.addEventListener('click', choiceLevel);
       console.log(newButton);
@@ -65,6 +92,10 @@ class Game{
     }
   }
 
+
+
+
+// Game
   setFreeCels(){
     this.freeCels=[];
     for (let y = 0 ; y < 3; y++){
@@ -109,6 +140,10 @@ class Game{
   finishWithWinner(ch){
     divInfo.textContent = `Winer is ${ch}`
     divInfo.style.display = 'inline-block'
+    divInfo.style.fontFamily = 'Pangolin';
+    divInfo.style.fontSize = '30px';
+    divInfo.style.color = 'white';
+
     for (let y=0; y<3; y++){
       for (let x=0; x<3; x++){
         if (this.playField[y][x].winner){
@@ -116,11 +151,27 @@ class Game{
         }
       }
     } 
+    // this.rePlayGame();
   }
 
   finishNoWinner(ch){
     divInfo.textContent = `Draw. There is no winner in this game`
     divInfo.style.display = 'inline-block' 
+    divInfo.style.fontFamily = 'Pangolin';
+    divInfo.style.fontSize = '30px';
+    divInfo.style.color = 'white';
+    // this.rePlayGame();
+  }
+
+  rePlayGame(){
+    let next = document.createElement('div');
+    next.style.width = '200px';
+    next.style.height = '200px';
+    next.style.backgroundColor = 'rgba(69, 70, 109, 0.7)';
+    next.style.position = 'absolute';
+    next.style.zIndex = '20';
+    next.style.margin = 'auto';
+    divInfo.appendChild(next);
   }
 
 
@@ -226,6 +277,9 @@ class Game{
           newTd.classList.add('cel');
           newTd.setAttribute ('xx',x);
           newTd.setAttribute ('yy',y);
+          newTd.style.fontFamily = 'Pangolin';
+          newTd.style.fontSize = '80px';
+          newTd.style.color = 'white';
           newTd.textContent = '';
           newTd.addEventListener('click', onClickFunc);
           newTr.appendChild (newTd);
@@ -304,6 +358,7 @@ function choiceXO(e){
 
 // We are waiting for the choice of difficulty level
 function choiceLevel(e){
+  divInfo.style.display = 'none';
   game.level=Number(e.target.name);
   game.createField();
   game.setFreeCels();
