@@ -26,6 +26,15 @@ for (let robot of robots){
   cards.appendChild(card);    
 }
 
+//Screen width control function. Change the indent of the block of cards from the top of the screen.
+window.addEventListener('resize', function(){
+  if (window.innerWidth < 1030){
+    cards.style.marginTop = '150px';
+  } else {
+    cards.style.marginTop = '100px';
+  }
+})
+
 
 function createTopBar(){
   let navBar = document.createElement('div');
@@ -67,7 +76,12 @@ function createCardsConteyner(){
   cards.style.justifyContent = 'space-around'
   cards.style.flexWrap = 'wrap';
   cards.style.margin ='0px auto';
-  cards.style.marginTop = '100px';
+  // cards.style.marginTop = '100px';
+  if (window.innerWidth < 1030){
+    cards.style.marginTop = '180px';
+  } else {
+    cards.style.marginTop = '100px';
+  }
 
   return cards;
 }
