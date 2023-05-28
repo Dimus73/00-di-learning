@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500&display=swap" rel="stylesheet">
+	<style>
+		.decor{
+			display: inline-flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-content: center;
+
+		}
+		#page{
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+		}
+		#outer{
+			background-color: rgb(160,140,135);
+			width: 600px;
+			height: 600px;
+
+		}
+		#inner{
+			/* display: inline-flex; */
+			background-color: rgb(206,196, 192);
+			width: 80%;
+			height: 80%;		
+			flex-direction: column;
+			align-content: center;
+			justify-content: start;
+		}
+		.inline{
+			display:inline-block;
+		}
+		#button{
+			font-size: 20px;
+			width: 240px;
+			height: 100px;		
+			margin-top: 25px;
+			margin-right: auto;
+			margin-left: auto;
+
+		}
+
+		#quote{
+			font-size: 35px;
+			color: rgb(90, 98, 105);
+			font-family: Saira;
+			font-weight: 500;
+			padding: 10px;
+		}
+		#quote::first-letter{
+			font-size: 1.5em;
+			font-family: Saira;
+			font-weight: 500;
+		}
+		#author, #like, #like_block{
+			text-align: right;
+			padding-right: 10px;
+			color: rgb(94, 167, 157);
+			font-size: 15px;
+			font-family: Saira;
+			font-weight: 500;
+		}
+	</style>
+</head>
+<body>
+	<div id="page" class="decor">
+		<div id="outer" class="decor">
+			<div id="inner" class="decor">
+				<button id="button" class="inline" onclick="generateQuote(event)">Generate Quote</button>
+				<div id="quote" class="inline">life is like</div>
+				<div id="author"></div>
+				<div id="like_block">
+					Likes: 
+					<span id='like'></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="decor" style="padding: 20px; margin-top: 20px; background-color: rgb(10, 84, 84);">
+			<form action=""name='filtr_navigate'>
+				<input type="text" name="info" style="width:450px"><br>
+				<input type="text" hidden name="position">
+				<button onclick="filter_fn(event)">Filter</button>
+				<button onclick="previous(event)">Previous</button>
+				<button onclick="next(event)">Next</button>
+			</form>
+		</div>
+
+		<div class="decor" style="padding: 20px; margin-top: 20px; background-color: rgb(109, 112, 112);">
+			<form action=""name='stat'>
+				<input type="text" name="info" readonly style="width:450px"><br>
+				<button onclick="characterWithSpace(event)">Character include space</button>
+				<button onclick="characterWithOutSpace(event)">Character NOT include space</button>
+				<button onclick="words(event)">Words</button>
+				<button onclick="likePlus(event)">Like</button>
+			</form>
+		</div>
+
+		<div style="padding: 20px; margin-top: 20px; background-color: rgb(139, 196, 193);">
+			<form action="" name="new_quote">
+				<label for="quote">Quote:</label>
+				<input type="text" name="quote">
+				<label for="author">Author:</label>
+				<input type="text" name="author">
+				<button onclick="addNewQuote(event)">New quote</button>
+			</form>
+		</div>
+	</div>
+<script src="script.js"></script>
+</body>
+</html>
+
