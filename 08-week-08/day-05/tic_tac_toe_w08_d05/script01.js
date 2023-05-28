@@ -1,3 +1,4 @@
+const body = document.body;
 const table       = document.querySelector('#table');
 const tbody       = table.getElementsByTagName('tbody')[0];
 const divInfo    = document.querySelector('#info');
@@ -151,7 +152,7 @@ class Game{
         }
       }
     } 
-    // this.rePlayGame();
+    this.rePlayGame();
   }
 
   finishNoWinner(ch){
@@ -160,18 +161,21 @@ class Game{
     divInfo.style.fontFamily = 'Pangolin';
     divInfo.style.fontSize = '30px';
     divInfo.style.color = 'white';
-    // this.rePlayGame();
+    this.rePlayGame();
   }
 
   rePlayGame(){
     let next = document.createElement('div');
     next.style.width = '200px';
     next.style.height = '200px';
-    next.style.backgroundColor = 'rgba(69, 70, 109, 0.7)';
+    next.style.backgroundColor = 'rgba(69, 70, 109, 0.8)';
     next.style.position = 'absolute';
     next.style.zIndex = '20';
     next.style.margin = 'auto';
-    divInfo.appendChild(next);
+    next.style.top = '50%';
+    next.style.left = '50%';
+    next.textContent = "New game?"
+    body.appendChild(next);
   }
 
 
