@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+File 2
+<div id="info"></div>
+<script>
+	let div = document.querySelector('#info')
+	const urlParams = new URLSearchParams(window.location.search);
+	console.log(urlParams);
+  let p1 = urlParams.get('text_entr');
+	let p2 = urlParams.get('mani_text');
+	console.log(p1, p2);
+</script>
+</body>
+</html>
