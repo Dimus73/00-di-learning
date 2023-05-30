@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.flex_div{
+			display: inline-flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+		.form_el{
+			margin: 40px;
+		}
+		#page{
+			display: inline-flex;
+			width: 100%;
+			height: 100%;
+		}
+		#container{
+			width: 80%;
+		}
+		#add_form{
+			background-color: rgb(178, 209, 243);
+
+		}
+		#img_container{
+			margin-top: 40px ;
+
+		}
+
+	</style>
+</head>
+<body>
+	<div id="page" class="flex_div">
+		<div id="container" class="flex_div" >
+			<form id="add_form" action="" name="serch_form">
+				<label for="search" class="form_el">Enter text:</label>
+				<input type="text" class="form_el" name="search">
+				<button onclick="clickEvent(event);" class="form_el">Add image</button>
+			</form>
+			<button onclick = "deleteAll(event)" style="margin: 20px;">Remove all gif's</button>
+			<div id="img_container" style="flex-direction: row; display: inline-flex; flex-wrap: wrap; justify-content: space-around;">
+				<!-- Imege block -->
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
+
