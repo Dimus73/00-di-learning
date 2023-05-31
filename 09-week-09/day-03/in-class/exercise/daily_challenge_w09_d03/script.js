@@ -113,10 +113,16 @@ function deleteAll(e){
 	e.preventDefault();
 	let gifList = img_container.getElementsByClassName('gif_cont');
 	console.log(gifList);
-	for (let i = 0 ; i < gifList.length; i++){
-		console.log(gifList[i]);
-		// gifList[i].remove();
-		gifList[i].style.display = 'none';
 
+	while (gifList.length) {
+		gifList[0].remove();	
 	}
+
+// let cc = gifList.length;
+// 	for (let i = 0 ; i < cc; i++){
+// 		console.log('len:', gifList.length, gifList[i]);
+// 		gifList[i].remove();
+// 		// gifList[i].style.display = 'none';
+
+// 	}
 }
