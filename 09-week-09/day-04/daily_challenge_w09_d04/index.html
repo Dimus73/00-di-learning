@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+	<div id="page">
+		<form action="" name="currency" id="info">
+			<label for="select_from">From:</label>
+			<select class="selects" id="select_from">
+				<!-- Place for otions -->
+			</select>
+			<label for="select_to">To:</label>
+			<select class="selects" id="select_to">
+				<!-- Place for otions -->
+			</select>
+			<label for="amount">Amount:</label>
+			<input type="text" name="amount">
+			<label for="resalt">Result:</label>
+			<input type="text" name="resalt">
+			<button id="button" onclick="calc(event)"> Calc </button>
+			<button id="button" onclick="flip(event)"> Flip the result </button>
+		</form>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
