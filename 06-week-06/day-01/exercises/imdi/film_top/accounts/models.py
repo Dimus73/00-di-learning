@@ -8,4 +8,4 @@ class UserProfile(models.Model):
     addres = models.CharField(max_length=50,blank=True, null=True)
     
     def __str__(self) -> str:
-      return f"{self.user.username}"
+      return f"{self.user.username}" 
