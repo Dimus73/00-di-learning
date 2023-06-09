@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const {
 	getAllProfiles,
 	getProfile,
@@ -34,6 +35,8 @@ const _insertProfile = (req, res) => {
 	console.log("****BODY*************************");
 	console.log(req.body);
 	console.log("****FORM*************************");
+	const salt = bcrypt.genSaltSync(10);
+	req.body.password = bcrypt.hashSync(req.body.password, salt);
 	insertProfile(req.body)
 	.then(data => {
 		res.json(data)

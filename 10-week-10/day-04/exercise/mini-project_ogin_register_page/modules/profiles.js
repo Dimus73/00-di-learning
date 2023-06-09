@@ -14,7 +14,7 @@ const getProfile = (id) =>{
 }
 
 const insertProfile = (profile) => {
-	// console.log("Test");
+	console.log("Test from insert Profile", profile);
 	return db('profile')
 	.insert(profile)
 	.returning('*')
