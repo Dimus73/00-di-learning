@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%- include('partials/headers') %>
+    <h1>EJS is a template engine</h1>
+    <h1 style="color:purple;">
+      Hi <%= locals.user.firstName %> - <%= locals.user.lastName %>
+      <!-- if else -->
+      <% if(locals.login) { %>
+          <h2>Welcome</h2>
+      <% } else { %>
+        <h2>Please login</h2>
+      <% } %>
+
+      <!-- loops -->
+      <% for(const key in students) { %>
+        <h2>  <%= key%> <%= students[key]%> </h2>
+      <% } %>
+
+      <%
+        let html = '';
+        for(const item in students){
+          html += '<h1>' + students[item] + '</h1>'
+        }
+      %>
+      <%- html %>
+<%- include('partials/footer') %>
+  </body>
+</html>

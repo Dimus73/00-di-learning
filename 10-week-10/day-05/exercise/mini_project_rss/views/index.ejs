@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<%- include('partials/head') %>
+</head>
+<body>
+	<%- include ('partials/headers') %>
+	<div id="page" class="container mt-6">
+		<div class="row">
+			<h1 class="h1 mt-6" style="margin-top: 50px;" ><b>The Fact Site</b></h1>
+			<h4>Welcome to The Fact Site</h4>
+			<h2>Posts</h2>
+			<% for(let i of locals.items){ %>
+				<div>
+					<h3>
+						<a href="<%= i.link%>" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+							 <%= i.title%>
+						 </a>
+					</h3>
+					<div>
+						<p><%= i.pubDate%> |<%= i.author%> > | </p>
+					</div>
+					<div>
+						<%-i.content%>
+					</div>
+			
+					<hr>
+				</div>
+			<%}%>
+		</div>
+	</div>
+
+</body>
+</html>
