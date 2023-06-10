@@ -21,9 +21,9 @@
 	margin: 5px;
 }
 
-#info_block_r, #info_block_v{
+#info_block_r, #info_block_l{
 	border: 1px solid black;
-	height: 40px;
+	min-height: 40px;
 	margin-top: 10px;
 	font-size: 10px;
 }

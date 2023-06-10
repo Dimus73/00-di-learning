@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const {
 	checkLogin,
-	addLoginInfo
+	addLoginInfo,
+	allLoginsOfUser
 } = require('../modules/login.js')
 
 const {
@@ -65,8 +66,24 @@ async function addLoginRegistration (data){
 	return result
 }
 
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+
+const _allLoginsOfUser = async (req, res) =>{
+	let id = req.params.id;
+	allLoginsOfUser(id)
+	.then(data=>{
+		res.json({ok:true,data})
+	})
+	.catch(err =>{
+		res.json({ok:false, msg:err})
+	})
+}
+
 module.exports = {
 	_checkLogin,
+	_allLoginsOfUser
 }
 
 

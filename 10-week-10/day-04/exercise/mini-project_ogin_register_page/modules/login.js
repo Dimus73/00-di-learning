@@ -7,6 +7,15 @@ const checkLogin = (username) => {
 	.where({username})
 }
 
+const allLoginsOfUser = (id) => {
+	return db('login_registr')
+	.select ('username', 'password', 'log_date')
+	.where('user_id', id)
+	.orderBy ('log_date', 'desc')
+}
+
+// This module is needed to add login information, 
+// it does not have a controller and router
 const addLoginInfo = (data) => {
 	return db('login_registr')
 	.insert(data)
@@ -15,5 +24,6 @@ const addLoginInfo = (data) => {
 
 module.exports = {
 	checkLogin,
-	addLoginInfo
+	addLoginInfo,
+	allLoginsOfUser
 }

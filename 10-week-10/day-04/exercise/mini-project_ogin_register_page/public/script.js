@@ -107,12 +107,13 @@ async function clickOnRegistry (e){
 		},
 		body: JSON.stringify(form_obj)
 	}
+
   try{
 		res = await fetch("/api/profiles", requestData)
 		if (res.status === 200){
 			let resInfo = await res.json();
 			console.log('Ok result', resInfo[0]);
-			divInfo.textContent = 'Profile added successfully' + resInfo
+			divInfo.textContent = 'Profile added successfully'
 
 // Fill in the registration form with the data obtained after creating the profile
 // This data is already in the response to the add request, but, for training, 
@@ -135,6 +136,9 @@ async function clickOnRegistry (e){
 			return "Error ----001"
 	}
 }
+
+
+
 
 // The function of obtaining user data upon request GET.
 async function getProfileDetail(id){
@@ -160,7 +164,67 @@ function fillForm(dataObj, fields, tag){
   }
 }
 
+//Function for preparing data for a query
 
 
 
+async function clickOnLogin(e){
+	e.preventDefault();
 
+	let form = document.forms['login'].elements;
+	let divInfo = document.querySelector('#info_block_l'); 
+	divInfo.textContent = '';
+	divInfo.innerHTML = spinner;
+
+	let form_obj={};
+	for (el of field_list_login){
+		form_obj[el]=form[el].value;
+	}
+
+	let requestData={
+		method:'POST',
+		headers:{
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(form_obj)
+	}
+
+	let res = await fetch("/login", requestData);
+	if (res.status === 200){
+		let resInfo = await res.json();
+		console.log('Ok result', resInfo);
+
+		let formReg = document.forms['registry'].elements;
+		fillForm(resInfo.data[0], regFields, formReg);
+
+		divInfo.innerHTML = `Login successfully.<br>\
+												Hello ${resInfo.data[0].first_name}<br>
+												Here is a list of your previous logins:`
+		let loginsList = await getLoginHistory(resInfo.data[0].id);
+
+		if (loginsList.ok){
+			for (r in loginsList.data){
+				let newP = document.createElement('p')
+				newP.textContent = `${Number(r)+1}. ${loginsList.data[r].log_date}  ${loginsList.data[r].username}   ${loginsList.data[r].password}`
+				divInfo.appendChild(newP)
+			}
+		}
+		 
+	}
+}
+
+async function getLoginHistory(id){
+	try {
+		res= await fetch('/login/'+id);
+		resInfo = await res.json();
+		// console.log(id,res,resInfo);
+		if (!res.ok){
+			return {ok:false, msg:"Error in Get Request"};
+		} else {
+			return {ok:true, data:resInfo.data};
+		}
+	} catch (error) {
+		return {ok:false, msg:"Error: Connection error"}
+	}
+
+}
