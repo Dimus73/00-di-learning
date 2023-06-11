@@ -22,8 +22,19 @@ const addLoginInfo = (data) => {
 	.returning('*')
 }
 
+// SQL sample 
+
+// const allLoginsOfUser = (id) => {
+// 	return db.raw('select * from regist' .........)
+// 	// .select ('username', 'password', 'log_date')
+// 	// .where('user_id', id)
+// 	// .orderBy ('log_date', 'desc')
+// }
+
+
 module.exports = {
 	checkLogin,
 	addLoginInfo,
 	allLoginsOfUser
 }
+

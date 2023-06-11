@@ -29,7 +29,6 @@ const _checkLogin = async (req, res) =>{
 				} 
 				logsResult = await addLoginRegistration(logRegData);
 //***************************************************************** */
-//				res.json({ok:true,data:data[0]})
 				res.json({ok:true,data:updateResult})
 			} else{
 				res.json({ok:false,msg:"Username and password combination is not correct"})
