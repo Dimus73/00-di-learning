@@ -19,7 +19,7 @@ class Colors extends React.Component{
 		console.log(colorToBlue);
 		return(
 			<div>
-				<h1>My Favorite Color is {this.state.favoriteColor}</h1>
+				<h1>My Favorite Color is {this.state.favoriteColor}this</h1>
 				<input type="submit" value="Color" onClick={colorToBlue} />
 			</div>
 		)
