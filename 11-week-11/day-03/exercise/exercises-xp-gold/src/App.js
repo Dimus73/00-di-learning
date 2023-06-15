@@ -7,7 +7,7 @@ function App() {
   return (
 
     <div>
-      <ErrorBoundary>
+      <ErrorBoundary zzz={{a:1,b:2,c:3}} >
           <ButtonObj />
           <ButtonObj />
       </ErrorBoundary>
@@ -16,4 +16,4 @@ function App() {
 }
 
 export default App;
- 
+  

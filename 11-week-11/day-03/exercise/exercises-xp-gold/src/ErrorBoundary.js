@@ -1,5 +1,5 @@
 import React from 'react'
-
+ 
 class ErrorBoundary extends React.Component{
 	constructor(){
 		super();
@@ -17,7 +17,7 @@ class ErrorBoundary extends React.Component{
 	}
 	
 	render(){
-		// console.log(this.props.children);
+		console.log(this.props);
 		if (!this.state.hasError){
 			return this.props.children
 		} 
