@@ -5,7 +5,7 @@ import Quotes from './Components/Quote'
 function App() {
   return (
     <div >
-      <Quotes />
+      <Quotes key={88}/>
     </div>
   );
 }
