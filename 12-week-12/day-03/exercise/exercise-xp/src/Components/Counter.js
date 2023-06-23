@@ -7,10 +7,9 @@ const Counter = () =>{
 
 	const count = useSelector((state) => (state.reducer_count.count));
 	const dispatch = useDispatch();
+
 	const incrimentIfOdd = () => dispatch(incrCountOdd())
 	
-	
-
 	return (
 		<div>
 			 
